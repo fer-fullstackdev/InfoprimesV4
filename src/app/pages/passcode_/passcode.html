@@ -1,0 +1,80 @@
+<!-- <ion-header>
+  <div class="header-section">
+    <div class="header-item">
+      <div class="left-section" (click)="goBack()" [hidden]="true">
+        <ion-icon name="infoprimes-arrow-colored-back" class="arrow-back-icon">&nbsp;</ion-icon>
+      </div>
+      <div class="middle-section">
+        <div class="title-section" [hidden]="true"></div>
+      </div>
+      <div class="right-section">&nbsp;</div>
+    </div>
+  </div>
+</ion-header> -->
+
+<ion-content padding>
+  <div class="main-content">
+    <div class="desc-section" text-center>
+      {{ 'PASSCODE.ONE_MORE_STEP' | translate }}
+    </div>
+    <div class="passcode-intro-txt">
+      <div *ngIf="isPasscode">{{ 'PASSCODE.CHOOSE_PASSCODE' | translate }}</div>
+      <div *ngIf="!isPasscode && !selectedIndexArrBackup.length">{{ 'PASSCODE.SETUP_PASSCDE' | translate }}</div>
+      <div *ngIf="!isPasscode && selectedIndexArrBackup.length">{{ 'PASSCODE.CONFIRM_PASSCDE' | translate }}</div>
+    </div>
+    <div id="progress-area" class="touch-section">
+      <div class="progress-round" [ngClass]="{'progress-filled': selectedIndexArr.length > 0, 'progress-not-filled': selectedIndexArr.length <= 0}">&nbsp;</div>
+      <div class="progress-round" [ngClass]="{'progress-filled': selectedIndexArr.length > 1, 'progress-not-filled': selectedIndexArr.length <= 1}">&nbsp;</div>
+      <div class="progress-round" [ngClass]="{'progress-filled': selectedIndexArr.length > 2, 'progress-not-filled': selectedIndexArr.length <= 2}">&nbsp;</div>
+      <div class="progress-round" [ngClass]="{'progress-filled': selectedIndexArr.length > 3, 'progress-not-filled': selectedIndexArr.length <= 3}">&nbsp;</div>
+    </div>
+    <div class="touch-section">
+      <div class="touch-round-out">
+        <button class="touch-round" round (click)="clickTouchItem(1)">1</button>
+      </div>
+      <div class="touch-round-out">
+        <button class="touch-round" round (click)="clickTouchItem(2)">2</button>
+      </div>
+      <div class="touch-round-out">
+        <button class="touch-round" round (click)="clickTouchItem(3)">3</button>
+      </div>
+    </div>
+    <div class="touch-section">
+      <div class="touch-round-out">
+        <button class="touch-round" round (click)="clickTouchItem(4)">4</button>
+      </div>
+      <div class="touch-round-out">
+        <button class="touch-round" round (click)="clickTouchItem(5)">5</button>
+      </div>
+      <div class="touch-round-out">
+        <button class="touch-round" round (click)="clickTouchItem(6)">6</button>
+      </div>
+    </div>
+    <div class="touch-section">
+      <div class="touch-round-out">
+        <button class="touch-round" round (click)="clickTouchItem(7)">7</button>
+      </div>
+      <div class="touch-round-out">
+        <button class="touch-round" round (click)="clickTouchItem(8)">8</button>
+      </div>
+      <div class="touch-round-out">
+        <button class="touch-round" round (click)="clickTouchItem(9)">9</button>
+      </div>
+    </div>
+    <div class="touch-section">
+      <div class="touch-round-out">
+        <div class="touch-round symbol-round" *ngIf="touchIdAvailable">
+          <img src="assets/icon/touchid.png" class="touchid-img" (click)="goToTouchIdPage()" />
+        </div>
+      </div>
+      <div class="touch-round-out">
+        <button class="touch-round" round (click)="clickTouchItem(0)">0</button>
+      </div>
+      <div class="touch-round-out">
+        <div class="touch-round symbol-round" (click)="delCharacter()">
+          <img src="assets/icon/arrowWhiteLeft.png" class="arrow-img" />
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

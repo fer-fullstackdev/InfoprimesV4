@@ -1,0 +1,6 @@
+<ion-tabs #menuTabs [selectedIndex]="tabIndex">
+  <ion-tab [root]="tab1Root" [tabTitle]="('TABS.POLICIES' | translate) || '&nbsp;'" tabIcon="infoprimes-tab-policy-false" tabsHideOnSubPages="true"></ion-tab>
+  <ion-tab [root]="tab2Root" [tabTitle]="('TABS.MY_BROKER' | translate) || '&nbsp;'" tabIcon="infoprimes-tab-mybroker-false"></ion-tab>
+  <ion-tab [root]="tab3Root" [tabTitle]="('TABS.MY_PROFILE' | translate) || '&nbsp;'" tabIcon="infoprimes-tab-myprofile-false" tabsHideOnSubPages="true"></ion-tab>
+  <ion-tab [root]="tab4Root" [tabTitle]="('TABS.RECLAMATION' | translate) || '&nbsp;'" tabIcon="infoprimes-tab-reclamation-false"></ion-tab>
+</ion-tabs>

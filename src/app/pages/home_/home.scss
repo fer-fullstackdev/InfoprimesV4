@@ -1,0 +1,281 @@
+page-home {
+  font-family: 'Muli';
+  .header-section {
+    background: linear-gradient(rgb(254, 173, 83), rgb(254, 149, 59));
+    top: 0px;
+    position: fixed;
+    height: 120px;
+    width: 100%;
+    justify-content: space-between;
+    z-index: 10000;
+  }
+  .header-item {
+    background: none;
+    padding-left: 9px;
+    padding-top: 23px;
+    display: flex;
+    justify-content: baseline;
+  }
+  .left-section {
+    display: flex;
+    flex-basis: 20px;
+  }
+  .middle-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+  }
+  .right-section {
+    width: 20px;
+  }
+  .arrow-back-icon {
+    min-width: 1px !important;
+    background-color: transparent;
+    width: 13px;
+  }
+  .title-section {
+    color: white;
+    font-weight: 600;
+    font-size: 19px;
+    padding-left: 17px;
+    text-transform: uppercase;
+  }
+  .main-content {
+    background: linear-gradient(rgba(51, 153, 219, 1), rgba(26, 158, 245, 1), rgba(18, 217, 250, 1));
+  }
+  .header-content {
+    padding-top: 23px;
+  }
+  .header-content:after {
+    height: 0px;
+  }
+  .logo-img {
+    height: 42px;
+  }
+  .segment-section {
+    padding: 24px 16px 18px 16px;
+  }
+  .segment-button {
+    border: none !important;
+    color: rgba(255, 255, 255, 0.5) !important;
+    font-size: 14px !important;
+    font-weight: 800 !important;
+    height: 18px !important;
+    line-height: 1.8rem !important;
+    opacity: 1 !important;
+  }
+  .segment-button.segment-activated {
+    background: transparent !important;
+    color: white !important;
+  }
+  .segment-button:first-of-type {
+    border-right: solid 1px white !important;
+  }
+  .household-btn {
+    background: rgba(10, 125, 201, 0.66);
+    font-weight: 700;
+    height: 34px;
+    width: 250px;
+    font-size: 16px;
+    text-transform: initial;
+  }
+  .cur-pol-card {
+    border-radius: 9px 9px 9px 9px;
+  }
+  .cur-pol-card-content {
+    padding: 0px;
+  }
+  .cur-pol-card-top {
+    background: rgba(240, 247, 252, 1);
+  }
+  .cur-pol-card-bottom {
+    background: rgb(255, 255, 255);
+  }
+  .cur-pol-card-top-content {
+    padding: 18px 22px 29px 22px;
+    text-align: center !important;
+    img {
+      display: inline-block;
+    }
+  }
+  .cur-pol-card-bottom-content {
+    padding: 12px 0px 15px 0px;
+  }
+  .cur-life-insurance-txt {
+    font-size: 16px;
+    font-weight: 700;
+    color: #005189;
+    padding-bottom: 1.5px;
+    height: 30px;
+  }
+  .flex-section {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  .warning-btn {
+    background: rgba(254, 184, 6, 0.24);
+    color: #e0886e;
+    font-size: 9px;
+    height: 24px;
+    text-transform: inherit;
+  }
+  .household-policies-txt {
+    color: rgba(87, 133, 166, 1);
+    font-size: 13px;
+    padding-top: 1.5px;
+    white-space: pre-line;
+    height: 34px
+  }
+  .dollar {
+    color: #00518A;
+    font-weight: 800;
+    font-size: 18px;
+    text-align: right;
+  }
+  .month {
+    color: #5685A5;
+    font-size: 10px;
+    text-align: right;
+  }
+  .policies-btn {
+    background: #DFF2FF;
+    color: #00518A;
+    font-weight: bold;
+    height: 34px;
+    width: 220px;
+    font-size: 12px;
+  }
+  .pen-pol-card {
+    border-radius: 9px 9px 9px 9px;
+    background: white;
+    padding-top: 3px;
+    padding-left: 0px;
+  }
+  .pen-life-insurance-txt {
+    font-size: 16px;
+    font-weight: 800;
+    color: #FE5D05;
+  }
+  .pen-disability-insurance-txt {
+    font-size: 16px;
+    font-weight: 800;
+    color: #97C62D;
+  }
+  .pen-long-term-insurance-txt {
+    font-size: 16px;
+    font-weight: 800;
+    color: #F2546B;
+  }
+  .pen-critical-insurance-txt {
+    font-size: 16px;
+    font-weight: 800;
+    color: #37AAD2;
+  }
+  .pen-travel-insurance-txt {
+    font-size: 16px;
+    font-weight: 800;
+    color: #A05FD6;
+  }
+  .pen-item-line {
+    display: inline-flex;
+  }
+  .pen-coverage {
+    padding-right: 12px;
+  }
+  .pen-policy-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #364A5D;
+  }
+  .pen-coverage-txt {
+    font-size: 14px;
+    color: #91A9C0;
+  }
+  .pen-coverage-dollar {
+    font-size: 14px;
+    color: #364A5D;
+  }
+  .pen-payment-txt {
+    font-size: 14px;
+    color: #91A9C0;
+  }
+  .pen-payment-month {
+    font-size: 14px;
+    display: flex;
+  }
+  .pen-dollar-txt {
+    font-weight: 800;
+    color: #364A5D;
+  }
+  .pen-month-txt {
+    color: #364A5D;
+  }
+  .insurance-img {
+    width: 48px !important;
+    height: 48px !important;
+  }
+  .zurich-img {
+    width: 60px !important;
+    height: 60px !important;
+  }
+  .pen-arrow-btn {
+    color: #afafaf;
+  }
+  .pen-divider {
+    background: rgba(232, 240, 245, 0.53);
+    padding-left: 18px;
+    display: inline-flex;
+    height: 37px;
+    align-items: center;
+    width: 100%;
+  }
+  .insurance-item {
+    padding-left: 18px !important;
+  }
+  .pen-zurich-img-item {
+    padding-left: 13px;
+  }
+  .pen-divider-date {
+    color: #25B1E4;
+    font-size: 10px;
+    font-weight: 700;
+  }
+  .pen-divider-desc {
+    color: #364A5D;
+    padding-left: 14px;
+    font-size: 10px;
+  }
+  .insurance-img {
+    width: 48px !important;
+    height: 48px !important;
+  }
+  .dollar-month {
+    line-height: 14px;
+    //padding-right: 25px;
+  }
+  .cur-policies-list {
+    margin: 0px !important;
+  }
+  .scroll-content::-webkit-scrollbar {
+    display: none;
+  }
+  .household-btn.activated {
+    background-color: rgba(10, 125, 201, 1);
+  }
+  .policies-btn.activated {
+    background-color: #93d3ff;
+  }
+  .warning-btn.activated {
+    background-color: rgba(254, 184, 6, 0.8);
+  }
+  .svg-content {
+    height: 179px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  /* Charts start **/
+  /* Charts end **/
+}

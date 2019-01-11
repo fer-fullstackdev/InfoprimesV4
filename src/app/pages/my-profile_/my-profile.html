@@ -1,0 +1,59 @@
+<ion-header>
+  <div class="header-section">
+    <div class="header-item">
+      <div class="left-section">
+        <!-- <ion-icon (click)="goBack()" name="infoprimes-arrow-back" class="arrow-back-icon">&nbsp;</ion-icon> -->
+      </div>
+      <div class="middle-section">
+        <div class="title-section">{{ 'PROFILE.TITLE' | translate }}</div>
+      </div>
+      <div class="right-section" (click)="goSetting()">
+        <ion-icon name="infoprimes-gear" class="gear-icon">&nbsp;</ion-icon>
+      </div>
+    </div>
+  </div>
+</ion-header>
+<ion-content>
+  <div class="info-section">
+    <div class="img-section" text-center>
+      <img class="circle-img" src="assets/imgs/profile_imgs/{{myProfile?.id}}.png" />
+      <img class="border-img" src="assets/icon/imageBorder.png" />
+    </div>
+    <div class="name">{{myProfile?.firstname}} {{myProfile?.lastname}}</div>
+    <div class="licence-num-txt">{{ 'GENERIC.CUSTOMER_NUMBER' | translate }}</div>
+    <div text-center>
+      <span class="licence-num">#{{allData?.security_key}}</span>
+    </div>
+  </div>
+  <div class="btn-area" text-center>
+    <div class="renew-txt">{{ 'PROFILE.CTA_INSURANCE_REV_MESSAGE' | translate }}</div>
+    <button class="review-btn" ion-button icon-right round (click)="goProfileReview()">
+      {{ 'PROFILE.CTA_INSURANCE_REV_BUTTON' | translate }}
+      <ion-icon name="arrow-forward"></ion-icon>
+    </button>
+  </div>
+  <ion-item class="profile-item" (click)="goHouseholdProfiles()">
+    <div class="title">{{ 'PROFILE.HOUSEHOLD_PROFILES' | translate }} ({{allData?.contacts?.data.length}})</div>
+    <button clear ion-button icon-only item-end round class="arrow-btn">
+      <ion-icon name="arrow-forward"></ion-icon>
+    </button>
+  </ion-item>
+  <ion-item class="profile-item" (click)="goHouseholdProfile(myProfile)">
+    <div class="title">{{ 'PROFILE.CONTACT_INFO' | translate }}</div>
+    <button clear ion-button icon-only item-end round class="arrow-btn">
+      <ion-icon name="arrow-forward"></ion-icon>
+    </button>
+  </ion-item>
+  <ion-item class="profile-item" (click)="goProfileReview()">
+    <div class="title">{{ 'PROFILE.INSURANCE_REVIEW' | translate }}</div>
+    <button clear ion-button icon-only item-end round class="arrow-btn">
+      <ion-icon name="arrow-forward"></ion-icon>
+    </button>
+  </ion-item>
+  <ion-item class="profile-item" (click)="goMyPolicies()">
+    <div class="title">{{ 'PROFILE.ALL_POLICIES' | translate }} ({{allData?.insurance?.data.length}})</div>
+    <button clear ion-button icon-only item-end round class="arrow-btn">
+      <ion-icon name="arrow-forward"></ion-icon>
+    </button>
+  </ion-item>
+</ion-content>

@@ -1,0 +1,136 @@
+page-household-profile {
+  font-family: 'Muli';
+  .header-section {
+    background: linear-gradient(#2B9AE6, #239CEC);
+    top: 0px;
+    position: fixed;
+    height: 68px;
+    width: 100%;
+    justify-content: space-between;
+    z-index: 10000;
+  }
+  .header-item {
+    background: none;
+    padding-left: 9px;
+    padding-right: 9px;
+    padding-top: 31px;
+    display: flex;
+    justify-content: baseline;
+  }
+  .left-section {
+    display: flex;
+    flex-basis: 10%;
+  }
+  .middle-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+  }
+  .right-section {
+    flex-basis: 10%;
+  }
+  .arrow-back-icon {
+    min-width: 1px !important;
+    background-color: transparent;
+    width: 13px;
+    font-size: 22px !important;
+  }
+  .title-section {
+    color: white;
+    font-weight: 800;
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+  .info-section {
+    text-align: center;
+    height: 256px;
+    margin-top: 67px;
+    background: linear-gradient(#239CEC, #15BAF8);
+  }
+  .img-section {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    height: 148px;
+  }
+  .border-img {
+    width: 146px;
+  }
+  .circle-img {
+    position: absolute;
+    display: inline-flex;
+    width: 109px;
+    top: 19px;
+    left: calc(50% - 54.5px);
+    border-radius: 50%;
+  }
+  .info-name {
+    width: 100%;
+    color: white;
+    font-size: 19px;
+    font-weight: 700;
+    padding-top: 3px;
+  }
+  .policy-btn-section {
+    color: white;
+    font-size: 14px;
+    padding-top: 4px;
+  }
+  .view-policy-btn {
+    background: rgba(0, 0, 0, 0.17);
+    text-transform: inherit;
+    margin-top: 12px;
+    height: 36px;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .info-item {
+    padding-left: 0px;
+    ion-label {
+      display: flex;
+      white-space: unset;
+    }
+    .item-inner {
+      border-bottom: 1.4px solid #f3eeee !important;
+    }
+  }
+  .info-item-title {
+    padding-left: 13px;
+    flex-basis: 45%;
+    color: #91A9C0;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .info-item-val {
+    color: #364A5D;
+    font-size: 15px;
+  }
+  .review-btn-area {
+    padding-bottom: 17px;
+    padding-top: 15px;
+    background: #F1F6F9;
+  }
+  .review-btn {
+    background: #8ACA17;
+    color: white;
+    height: 32px;
+    text-transform: initial;
+    padding-top: 1px;
+    padding-bottom: 2px;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .review-btn.activated {
+    background-color: rgba(10, 125, 201, 1);
+  }
+  .view-policy-btn.activated {
+    background-color: rgba(10, 125, 201, 1);
+  }
+  .info-changed-txt {
+    color: #90A9C1;
+    font-size: 14px;
+    padding-bottom: 3px;
+  }
+}

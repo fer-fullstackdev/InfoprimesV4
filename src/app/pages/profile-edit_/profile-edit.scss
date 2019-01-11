@@ -1,0 +1,194 @@
+page-profile-edit {
+  font-family: 'Muli';
+  .header-section {
+    background: white;
+    top: 0px;
+    position: fixed;
+    height: 68px;
+    width: 100%;
+    justify-content: space-between;
+    z-index: 10000;
+  }
+  .header-item {
+    background: none;
+    padding-left: 9px;
+    padding-right: 9px;
+    padding-top: 31px;
+    display: flex;
+    justify-content: baseline;
+  }
+  .left-section {
+    display: flex;
+    flex-basis: 10%;
+  }
+  .middle-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+  }
+  .right-section {
+    flex-basis: 10%;
+  }
+  .close-icon {
+    min-width: 1px !important;
+    background-color: transparent;
+    width: 22px;
+    font-size: 22px !important;
+  }
+  .title-section {
+    color: #2D99E2;
+    font-weight: 800;
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+  .main-content {
+    margin-top: 67px;
+  }
+  .profile-img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+  }
+  .profile-img-section {
+    padding-top: 15px;
+    width: 100%;
+    text-align: center;
+  }
+  .camera-icon {
+    margin-left: -34px;
+    width: 33px;
+    height: 33px;
+  }
+  .fields-section {
+    padding-left: 16px;
+    padding-right: 16px;
+    ion-label {
+      color: #91A9C0 !important;
+      font-size: 12px !important;
+      margin-left: 0;
+      margin-bottom: 0px !important;
+    }
+    item-input {
+      margin: 14px 0px 0px 0px;
+      padding: 0px 0px 0px 0px !important;
+    }
+    .item {
+      padding: 0px 0px 0px 0px;
+      color: rgba(54, 74, 92, 1);
+    }
+    .item-inner {
+      border-bottom: 1.5px solid #E7F0F6 !important;
+    }
+    .text-input {
+      margin-top: 4px;
+    }
+    .selectbox-section {
+      display: flex;
+      flex-direction: row;
+      height: 45px;
+      ion-label {
+        margin-top: 16px;
+      }
+    }
+    .select-icon {
+      display: none;
+    }
+    .arrow-down-icon {
+      width: 20px;
+      font-size: 20px;
+      margin-top: 34px !important;
+      margin-bottom: 4px !important;
+      padding: 0px;
+      background-color: transparent;
+    }
+    .dob-arrow-down-icon {
+      width: 0.5em;
+      color: #b6c4d2;
+    }
+    ion-select {
+      max-width: 100%;
+    }
+    .select-text {
+      color: #364A5D;
+    }
+    .select-item {
+      height: 61px;
+      .select-label {
+        max-height: 20px;
+      }
+      .select-box {
+        padding-top: 0px;
+      }
+    }
+  }
+  .btn-area {
+    padding: 1px 0px 2px 0px;
+  }
+  .action-btn {
+    width: 264px;
+    height: 38px;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    background: #1F9CF1;
+    text-transform: initial;
+  }
+  .asterisk-ele {
+    color: red;
+    position: relative;
+    font-size: 7.6px;
+    top: -4px !important;
+    left: 3px;
+  }
+  .profile-form {
+    .item-inner {
+      padding-right: 0px !important;
+    }
+  }
+  .item.item[no-lines] .item-inner {
+    border: none !important;
+  }
+  .validation-error {
+    padding: 0px !important;
+    ion-label {
+      color: #F93535 !important;
+      font-size: 11px !important;
+      margin-top: 3px !important;
+      margin-bottom: 0px !important;
+    }
+    min-height: 0px !important;
+  }
+  .item-input.ng-invalid.item-input-has-focus,
+  .item-input.ng-invalid.item-input-has-focus.item-input-has-value {
+    border-bottom: solid 2px #19A4F6 !important;
+    .item-inner {
+      border-bottom: none !important;
+      box-shadow: none;
+    }
+  }
+  .item-input.ng-valid.item-input-has-focus.input-has-value {
+    border-bottom: solid 2px #19A4F6 !important;
+    .item-inner {
+      border-bottom: none !important;
+      box-shadow: none;
+    }
+  }
+  .invalid-input-error {
+    border-bottom: solid 2px #F93535 !important;
+    .item-inner {
+      border-bottom: none !important;
+    }
+  }
+  .item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus) {
+    .item-inner {
+      box-shadow: none;
+    }
+  }
+  .item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner,
+  .item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) {
+    .item-inner {
+      box-shadow: none;
+    }
+  }
+}
