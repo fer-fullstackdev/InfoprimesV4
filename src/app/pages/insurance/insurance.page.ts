@@ -1,5 +1,5 @@
 import { Component, ViewChild, Input, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, Select } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Select } from '@ionic/angular';
 
 import { UserProvider } from '../../providers/user/user';
 import { PolicyPage } from '../policy/policy';

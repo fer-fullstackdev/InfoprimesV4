@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, Slides, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Slides, ModalController } from '@ionic/angular';
 import { Http, Headers } from '@angular/http';
 
 import { ConfirmationPage } from '../confirmation/confirmation';

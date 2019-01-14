@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { AppGlobals } from '../../shared/app.globals';
 import { FormControl, FormGroup, Validators } from '@angular/forms';

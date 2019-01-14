@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App } from '@ionic/angular';
 
 import { PolicyStatusPage } from '../policy-status/policy-status';
 import { HouseholdProfilePage } from '../household-profile/household-profile';

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { TouchID } from '@ionic-native/touch-id';
 import { TranslateService } from '@ngx-translate/core';

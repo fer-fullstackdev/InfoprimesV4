@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from '@ionic/angular';
 
 import { ApiProvider } from '../../providers/api/api';
 import { UiUtilsProvider } from '../../providers/ui-utils/ui-utils';

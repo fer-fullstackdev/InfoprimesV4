@@ -1,5 +1,5 @@
 import { Component, NgZone, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, ModalController, Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, ModalController, Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { Vibration } from '@ionic-native/vibration';
 

@@ -1,5 +1,5 @@
 import { Component, ViewChild, Input, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, Slides, Select } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Slides, Select } from '@ionic/angular';
 
 import { Storage } from '@ionic/storage';
 import { ApiProvider } from '../../providers/api/api';

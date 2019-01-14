@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, ModalController, Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, ModalController, Platform } from '@ionic/angular';
 
 import { TouchID } from '@ionic-native/touch-id';
 import { PasscodePage } from '../passcode/passcode';

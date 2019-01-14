@@ -1,5 +1,5 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, Select } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, Select } from '@ionic/angular';
 import { Http, Headers } from '@angular/http';
 import * as _ from 'lodash';
 import { UserProvider } from '../../providers/user/user';

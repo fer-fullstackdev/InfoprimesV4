@@ -1,5 +1,5 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, Select } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController, Select } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { AppGlobals } from '../../shared/app.globals';
 import { Http, Headers } from '@angular/http';
