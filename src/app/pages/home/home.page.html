@@ -1,9 +1,450 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>home</ion-title>
-  </ion-toolbar>
+<ion-header class="header-content">
+  <div text-center>
+    <img src="assets/icon/InfoPrimesLogoHome.png" class="logo-img" />
+  </div>
+  <div class="segment-section">
+    <ion-segment [(ngModel)]="policiesStatus">
+      <ion-segment-button value="current">
+        {{ 'HOME.CURRENT_POLICIES' | translate }}
+      </ion-segment-button>
+      <ion-segment-button value="pending">
+        {{ 'HOME.PENDING_POLICIES' | translate }}
+      </ion-segment-button>
+    </ion-segment>
+  </div>
 </ion-header>
-
-<ion-content padding>
-
+<ion-content class="main-content" no-bounce>
+  <div class="flex-section">
+    <div [ngSwitch]="policiesStatus" class="flex-section">
+      <ion-list [hidden]="policiesStatus == 'pending'" class="flex-section cur-policies-list">
+        <div text-center>
+          <ion-item [hidden]="true">
+            <ion-label stacked>Contact</ion-label>
+            <ion-select #contactListSelect [(ngModel)]="contact" interface="action-sheet" (ionChange)="changeContact()">
+              <ion-option *ngIf="userService?.lang == 'en'">{{mainContact?.lastname}} {{ 'HOME.HOUSEHOLD' | translate }}</ion-option>
+              <ion-option *ngIf="userService?.lang == 'fr'"> {{ 'HOME.HOUSEHOLD' | translate }} {{mainContact?.lastname}}</ion-option>
+              <ion-option *ngFor="let contact of contacts" [value]="contact">{{contact?.firstname}}</ion-option>
+            </ion-select>
+          </ion-item>
+          <button class="household-btn" ion-button icon-right round (click)="openContactList()">
+            <p *ngIf="isLead && userService?.lang == 'en'">{{mainContact?.lastname}} {{ 'HOME.HOUSEHOLD' | translate }}</p>
+            <p *ngIf="isLead && userService?.lang == 'fr'">{{ 'HOME.HOUSEHOLD' | translate }} {{mainContact?.lastname}}</p>
+            <p *ngIf="!isLead">{{contact?.firstname}}</p>
+            <ion-icon name="arrow-down"></ion-icon>
+          </button>
+        </div>
+        <div class="flex-section">
+          <ion-slides #slides slidesPerView="1.05" spaceBetween="-8" centeredSlides="true" (ionSlideDidChange)="slideChanged()">
+            <ion-slide>
+              <ion-card class="cur-pol-card flex-section first-card">
+                <ion-card-content class="cur-pol-card-content">
+                  <div class="cur-pol-card-top">
+                    <div class="cur-pol-card-top-content">
+                      <p class="cur-life-insurance-txt">{{ 'GENERIC.LIFE_INSURANCE_CAPS' | translate }}</p>
+                      <!--charts start-->
+                      <div class="svg-content" id="svg-life">
+                        <svg-household *ngIf="isLead && animatedInsurances.household.life && svgHouseHoldLifeData" type="life" [graphicData]="svgHouseHoldLifeData"></svg-household>
+                        <div *ngFor="let item of contacts">
+                          <svg-individual *ngIf="!isLead && item.id == contact.id && animatedInsurances.individual.life && svgIndividualLifeData" type="life" [graphicData]="svgIndividualLifeData"></svg-individual>
+                        </div>
+                      </div>
+                      <!--charts end-->
+                    </div>
+                  </div>
+                  <div class="cur-pol-card-bottom">
+                    <div class="cur-pol-card-bottom-content">
+                      <!-- <button class="warning-btn" *ngIf="penLifeInsurance?.length" ion-button icon-left round (click)="goPending();">
+                        <ion-icon name="warning"></ion-icon>
+                        {{ 'HOME.PENDING_LIFE_NOTIFICATION' | translate }} ({{penLifeInsurance?.length}})
+                      </button> -->
+                      <ion-item>
+                        <ion-avatar item-start>
+                          <img src="assets/icon/icLifeInsuranceSolid.png" class="insurance-img">
+                        </ion-avatar>
+                        <p class="cur-life-insurance-txt">{{ 'GENERIC.LIFE_CAPS' | translate }}</p>
+                        <p class="household-policies-txt">{{ 'HOME.HOUSEHOLD_POLICIES' | translate }} ({{lifeInsurance?.length}})</p>
+                        <div class="dollar-month" item-end>
+                          <div class="dollar">{{sumPayment('life')}}</div>
+                          <div class="month">{{ 'GENERIC.PER_MONTH' | translate }}</div>
+                        </div>
+                      </ion-item>
+                      <button class="policies-btn" (click)="goInsurance('life')" ion-button icon-right round>
+                        {{ 'GENERIC.VIEW_ALL_POLICIES' | translate }}
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </button>
+                    </div>
+                  </div>
+                </ion-card-content>
+              </ion-card>
+            </ion-slide>
+            <ion-slide>
+              <ion-card class="cur-pol-card flex-section">
+                <ion-card-content class="cur-pol-card-content">
+                  <div class="cur-pol-card-top">
+                    <div class="cur-pol-card-top-content">
+                      <p class="cur-life-insurance-txt">{{ 'GENERIC.DISABILITY_INSURANCE_CAPS' | translate }}</p>
+                      <!--charts start-->
+                      <div class="svg-content" id="svg-disability">
+                        <svg-household *ngIf="isLead && animatedInsurances.household.disability && svgHouseHoldDisabilityData" type="disability" [graphicData]="svgHouseHoldDisabilityData"></svg-household>
+                        <div *ngFor="let item of contacts">
+                          <svg-individual *ngIf="!isLead && item.id == contact.id && animatedInsurances.individual.disability && svgIndividualDisabilityData" type="disability" [graphicData]="svgIndividualDisabilityData"></svg-individual>
+                        </div>
+                      </div>
+                      <!--charts end-->
+                    </div>
+                  </div>
+                  <div class="cur-pol-card-bottom">
+                    <div class="cur-pol-card-bottom-content">
+                      <button class="warning-btn" *ngIf="penDisabilityInsurance?.length" ion-button icon-left round (click)="goPending();">
+                        <ion-icon name="warning"></ion-icon>
+                        {{ 'HOME.PENDING_DISABILITY_NOTIFICATION' | translate }} ({{penDisabilityInsurance?.length}})
+                      </button>
+                      <ion-item>
+                        <ion-avatar item-start>
+                          <img src="assets/icon/icDisabilityInsuranceSolid.png" class="insurance-img">
+                        </ion-avatar>
+                        <p class="cur-life-insurance-txt">{{ 'GENERIC.DISABILITY_CAPS' | translate }}</p>
+                        <p class="household-policies-txt">{{ 'HOME.HOUSEHOLD_POLICIES' | translate }} ({{disabilityInsurance?.length}})</p>
+                        <div class="dollar-month" item-end>
+                          <div class="dollar">{{sumPayment('disability')}}</div>
+                          <div class="month">{{ 'GENERIC.PER_MONTH' | translate }}</div>
+                        </div>
+                      </ion-item>
+                      <button class="policies-btn" (click)="goInsurance('disability')" ion-button icon-right round>
+                        {{ 'GENERIC.VIEW_ALL_POLICIES' | translate }}
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </button>
+                    </div>
+                  </div>
+                </ion-card-content>
+              </ion-card>
+            </ion-slide>
+            <ion-slide>
+              <ion-card class="cur-pol-card flex-section">
+                <ion-card-content class="cur-pol-card-content">
+                  <div class="cur-pol-card-top">
+                    <div class="cur-pol-card-top-content">
+                      <p class="cur-life-insurance-txt">{{ 'GENERIC.LONG_TERM_CARE_INSURANCE_CAPS' | translate }}</p>
+                      <!--charts start-->
+                      <div class="svg-content" id="svg-longtermcare">
+                        <svg-household *ngIf="isLead && animatedInsurances.household.longtermcare && svgHouseHoldLongtermcareData" type="longtermcare" [graphicData]="svgHouseHoldLongtermcareData"></svg-household>
+                        <div *ngFor="let item of contacts">
+                          <svg-individual *ngIf="!isLead && item.id == contact.id && animatedInsurances.individual.longtermcare && svgIndividualLongtermcareData" type="longtermcare" [graphicData]="svgIndividualLongtermcareData"></svg-individual>
+                        </div>
+                      </div>
+                      <!--charts end-->
+                    </div>
+                  </div>
+                  <div class="cur-pol-card-bottom">
+                    <div class="cur-pol-card-bottom-content">
+                      <!-- <button class="warning-btn" *ngIf="penLongTermInsurance?.length" ion-button icon-left round (click)="goPending();">
+                        <ion-icon name="warning"></ion-icon>
+                        {{ 'HOME.PENDING_LONG_TERM_CARE_NOTIFICATION' | translate }} ({{penLongTermInsurance?.length}})
+                      </button> -->
+                      <ion-item>
+                        <ion-avatar item-start>
+                          <img src="assets/icon/icLong_termCareInsuranceSolid.png" class="insurance-img">
+                        </ion-avatar>
+                        <p class="cur-life-insurance-txt">{{ 'GENERIC.LONG_TERM_CARE_CAPS' | translate }}</p>
+                        <p class="household-policies-txt">{{ 'HOME.HOUSEHOLD_POLICIES' | translate }} ({{longTermInsurance?.length}})</p>
+                        <div class="dollar-month" item-end>
+                          <div class="dollar">{{sumPayment('longtermcare')}}</div>
+                          <div class="month">{{ 'GENERIC.PER_MONTH' | translate }}</div>
+                        </div>
+                      </ion-item>
+                      <button class="policies-btn" (click)="goInsurance('longtermcare')" ion-button icon-right round>
+                        {{ 'GENERIC.VIEW_ALL_POLICIES' | translate }}
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </button>
+                    </div>
+                  </div>
+                </ion-card-content>
+              </ion-card>
+            </ion-slide>
+            <ion-slide>
+              <ion-card class="cur-pol-card flex-section">
+                <ion-card-content class="cur-pol-card-content">
+                  <div class="cur-pol-card-top">
+                    <div class="cur-pol-card-top-content">
+                      <p class="cur-life-insurance-txt">{{ 'GENERIC.CRITICAL_ILLNESS_INSURANCE_CAPS' | translate }}</p>
+                      <!--charts start-->
+                      <div class="svg-content" id="svg-critical">
+                        <svg-household *ngIf="isLead && animatedInsurances.household.critical && svgHouseHoldCriticalData" type="critical" [graphicData]="svgHouseHoldCriticalData"></svg-household>
+                        <div *ngFor="let item of contacts">
+                          <svg-individual *ngIf="!isLead && item.id == contact.id && animatedInsurances.individual.critical && svgIndividualCriticalData" type="critical" [graphicData]="svgIndividualCriticalData"></svg-individual>
+                        </div>
+                      </div>
+                      <!--charts end-->
+                    </div>
+                  </div>
+                  <div class="cur-pol-card-bottom">
+                    <div class="cur-pol-card-bottom-content">
+                      <!-- <button class="warning-btn" *ngIf="penCriticalInsurance?.length" ion-button icon-left round (click)="goPending();">
+                        <ion-icon name="warning"></ion-icon>
+                        {{ 'HOME.PENDING_CRITICAL_ILLNESS_NOTIFICATION' | translate }} ({{penCriticalInsurance?.length}})
+                      </button> -->
+                      <ion-item>
+                        <ion-avatar item-start>
+                          <img src="assets/icon/icCriticalIllnessInsuranceSolid.png" class="insurance-img">
+                        </ion-avatar>
+                        <p class="cur-life-insurance-txt">{{ 'GENERIC.CRITICAL_ILLNESS_CAPS' | translate }}</p>
+                        <p class="household-policies-txt">{{ 'HOME.HOUSEHOLD_POLICIES' | translate }} ({{criticalInsurance?.length}})</p>
+                        <div class="dollar-month" item-end>
+                          <div class="dollar">{{sumPayment('critical')}}</div>
+                          <div class="month">{{ 'GENERIC.PER_MONTH' | translate }}</div>
+                        </div>
+                      </ion-item>
+                      <button class="policies-btn" (click)="goInsurance('critical')" ion-button icon-right round>
+                        {{ 'GENERIC.VIEW_ALL_POLICIES' | translate }}
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </button>
+                    </div>
+                  </div>
+                </ion-card-content>
+              </ion-card>
+            </ion-slide>
+            <ion-slide>
+              <ion-card class="cur-pol-card flex-section last-card">
+                <ion-card-content class="cur-pol-card-content">
+                  <div class="cur-pol-card-top">
+                    <div class="cur-pol-card-top-content">
+                      <p class="cur-life-insurance-txt">{{ 'GENERIC.TRAVEL_INSURANCE_CAPS' | translate }}</p>
+                      <!--charts start-->
+                      <div class="svg-content" id="svg-travel">
+                        <svg-household *ngIf="isLead && animatedInsurances.household.travel && svgHouseHoldTravelData" type="travel" [graphicData]="svgHouseHoldTravelData"></svg-household>
+                        <div *ngFor="let item of contacts">
+                          <svg-individual *ngIf="!isLead && item.id == contact.id && animatedInsurances.individual.travel && svgIndividualTravelData" type="travel" [graphicData]="svgIndividualTravelData"></svg-individual>
+                        </div>
+                      </div>
+                      <!--charts end-->
+                    </div>
+                  </div>
+                  <div class="cur-pol-card-bottom">
+                    <div class="cur-pol-card-bottom-content">
+                      <!-- <button class="warning-btn" *ngIf="penTravelInsurance?.length" ion-button icon-left round (click)="goPending();">
+                        <ion-icon name="warning"></ion-icon>
+                        {{ 'HOME.PENDING_TRAVEL_NOTIFICATION' | translate }} ({{penTravelInsurance?.length}})
+                      </button> -->
+                      <ion-item>
+                        <ion-avatar item-start>
+                          <img src="assets/icon/icTravelInsuranceSolid.png" class="insurance-img">
+                        </ion-avatar>
+                        <p class="cur-life-insurance-txt">{{ 'GENERIC.TRAVEL_CAPS' | translate }}</p>
+                        <p class="household-policies-txt">{{ 'HOME.HOUSEHOLD_POLICIES' | translate }} ({{travelInsurance?.length}})</p>
+                        <div class="dollar-month" item-end>
+                          <div class="dollar">{{sumPayment('travel')}}</div>
+                          <div class="month">{{ 'GENERIC.PER_MONTH' | translate }}</div>
+                        </div>
+                      </ion-item>
+                      <button class="policies-btn" (click)="goInsurance('travel')" ion-button icon-right round>
+                        {{ 'GENERIC.VIEW_ALL_POLICIES' | translate }}
+                        <ion-icon name="arrow-forward"></ion-icon>
+                      </button>
+                    </div>
+                  </div>
+                </ion-card-content>
+              </ion-card>
+            </ion-slide>
+          </ion-slides>
+        </div>
+      </ion-list>
+      <ion-list [hidden]="policiesStatus == 'current'">
+        <ion-card class="pen-pol-card" *ngIf="penLifeInsurance?.length">
+          <ion-item class="insurance-item">
+            <ion-avatar item-start>
+              <img class="insurance-img" src="assets/icon/icLifeInsuranceLine.png">
+            </ion-avatar>
+            <p class="pen-life-insurance-txt">{{ 'GENERIC.LIFE_INSURANCE_CAPS' | translate }}</p>
+          </ion-item>
+          <div *ngFor="let policy of penLifeInsurance">
+            <ion-item class="pen-zurich-img-item" (click)="goPolicy(policy)">
+              <ion-avatar item-start>
+                <img class="zurich-img" src="assets/imgs/company_logos/{{policy?.company}}.png">
+              </ion-avatar>
+              <p class="pen-policy-name">{{policy?.company_name}}</p>
+              <div class="pen-item-line">
+                <div class="pen-coverage">
+                  <div class="pen-coverage-txt">{{ 'GENERIC.COVERAGE' | translate }}</div>
+                  <div class="pen-coverage-dollar">{{policy?.details?.data?.death_capital ? appGlobal.priceFormatRound(policy?.details?.data?.death_capital) : appGlobal.priceFormatRound(policy?.details?.data?.base_capital)}}</div>
+                </div>
+                <div class="pen-payment">
+                  <div class="pen-payment-txt">{{ 'GENERIC.PAYMENT' | translate }}</div>
+                  <div class="pen-payment-month">
+                    <p class="pen-dollar-txt">{{appGlobal.priceFormat(policy?.details?.data?.monthly_payment)}}&nbsp;</p>
+                    <p class="pen-month-txt">{{ 'GENERIC.PER_MONTH' | translate }}</p>
+                  </div>
+                </div>
+              </div>
+              <button class="pen-arrow-btn" clear ion-button icon-only item-end>
+                <ion-icon name="arrow-forward"></ion-icon>
+              </button>
+            </ion-item>
+            <div class="pen-divider">
+              <p class="pen-divider-date">{{lastActiveDate(policy)}}</p>
+              <p class="pen-divider-desc" *ngIf="appGlobal.getPolicyStatus(policy) == 'in force'">{{ 'POLICY_STATUS.IN_FORCE' | translate }}</p>
+              <p class="pen-divider-desc" *ngIf="appGlobal.getPolicyStatus(policy) == 'canceled'">{{ 'POLICY_STATUS.CANCELLED' | translate }}</p>
+              <p class="pen-divider-desc" *ngIf="appGlobal.getPolicyStatus(policy) == 'pending'">{{ 'POLICY_STATUS.PENDING' | translate }}</p>
+              <p class="pen-divider-desc" *ngIf="appGlobal.getPolicyStatus(policy) == 'refused'">{{ 'POLICY_STATUS.REFUSED' | translate }}</p>
+            </div>
+          </div>
+        </ion-card>
+        <ion-card class="pen-pol-card" *ngIf="penDisabilityInsurance?.length">
+          <ion-item class="insurance-item">
+            <ion-avatar item-start>
+              <img class="insurance-img" src="assets/icon/icDisabilityInsuranceLine.png">
+            </ion-avatar>
+            <p class="pen-disability-insurance-txt">{{ 'GENERIC.DISABILITY_INSURANCE_CAPS' | translate }}</p>
+          </ion-item>
+          <div *ngFor="let policy of penDisabilityInsurance">
+            <ion-item class="pen-zurich-img-item" (click)="goPolicy(policy)">
+              <ion-avatar item-start>
+                <img class="zurich-img" src="assets/imgs/company_logos/{{policy?.company}}.png">
+              </ion-avatar>
+              <p class="pen-policy-name">{{policy?.company_name}}</p>
+              <div class="pen-item-line">
+                <div class="pen-coverage">
+                  <div class="pen-coverage-txt">{{ 'GENERIC.COVERAGE' | translate }}</div>
+                  <div class="pen-coverage-dollar">{{policy?.details?.data?.death_capital ? appGlobal.priceFormatRound(policy?.details?.data?.death_capital) : appGlobal.priceFormatRound(policy?.details?.data?.base_capital)}}</div>
+                </div>
+                <div class="pen-payment">
+                  <div class="pen-payment-txt">{{ 'GENERIC.PAYMENT' | translate }}</div>
+                  <div class="pen-payment-month">
+                    <p class="pen-dollar-txt">{{appGlobal.priceFormat(policy?.details?.data?.monthly_payment)}}&nbsp;</p>
+                    <p class="pen-month-txt">{{ 'GENERIC.PER_MONTH' | translate }}</p>
+                  </div>
+                </div>
+              </div>
+              <button class="pen-arrow-btn" clear ion-button icon-only item-end>
+                <ion-icon name="arrow-forward"></ion-icon>
+              </button>
+            </ion-item>
+            <div class="pen-divider">
+              <p class="pen-divider-date">{{lastActiveDate(policy)}}</p>
+              <p class="pen-divider-desc" *ngIf="appGlobal.getPolicyStatus(policy) == 'in force'">{{ 'POLICY_STATUS.IN_FORCE' | translate }}</p>
+              <p class="pen-divider-desc" *ngIf="appGlobal.getPolicyStatus(policy) == 'canceled'">{{ 'POLICY_STATUS.CANCELLED' | translate }}</p>
+              <p class="pen-divider-desc" *ngIf="appGlobal.getPolicyStatus(policy) == 'pending'">{{ 'POLICY_STATUS.PENDING' | translate }}</p>
+              <p class="pen-divider-desc" *ngIf="appGlobal.getPolicyStatus(policy) == 'refused'">{{ 'POLICY_STATUS.REFUSED' | translate }}</p>
+            </div>
+          </div>
+        </ion-card>
+        <ion-card class="pen-pol-card" *ngIf="penLongTermInsurance?.length">
+          <ion-item class="insurance-item">
+            <ion-avatar item-start>
+              <img class="insurance-img" src="assets/icon/icLong_termCareInsuranceLine.png">
+            </ion-avatar>
+            <p class="pen-long-term-insurance-txt">{{ 'GENERIC.LONG_TERM_CARE_INSURANCE_CAPS' | translate }}</p>
+          </ion-item>
+          <div *ngFor="let policy of penLongTermInsurance">
+            <ion-item class="pen-zurich-img-item" (click)="goPolicy(policy)">
+              <ion-avatar item-start>
+                <img class="zurich-img" src="assets/imgs/company_logos/{{policy?.company}}.png">
+              </ion-avatar>
+              <p class="pen-policy-name">{{policy?.company_name}}</p>
+              <div class="pen-item-line">
+                <div class="pen-coverage">
+                  <div class="pen-coverage-txt">{{ 'GENERIC.COVERAGE' | translate }}</div>
+                  <div class="pen-coverage-dollar">{{policy?.details?.data?.death_capital ? appGlobal.priceFormatRound(policy?.details?.data?.death_capital) : appGlobal.priceFormatRound(policy?.details?.data?.base_capital)}}</div>
+                </div>
+                <div class="pen-payment">
+                  <div class="pen-payment-txt">{{ 'GENERIC.PAYMENT' | translate }}</div>
+                  <div class="pen-payment-month">
+                    <p class="pen-dollar-txt">{{appGlobal.priceFormat(policy?.details?.data?.monthly_payment)}}&nbsp;</p>
+                    <p class="pen-month-txt">{{ 'GENERIC.PER_MONTH' | translate }}</p>
+                  </div>
+                </div>
+              </div>
+              <button class="pen-arrow-btn" clear ion-button icon-only item-end>
+                <ion-icon name="arrow-forward"></ion-icon>
+              </button>
+            </ion-item>
+            <div class="pen-divider">
+              <p class="pen-divider-date">{{lastActiveDate(policy)}}</p>
+              <p class="pen-divider-desc" *ngIf="appGlobal.getPolicyStatus(policy) == 'in force'">{{ 'POLICY_STATUS.IN_FORCE' | translate }}</p>
+              <p class="pen-divider-desc" *ngIf="appGlobal.getPolicyStatus(policy) == 'canceled'">{{ 'POLICY_STATUS.CANCELLED' | translate }}</p>
+              <p class="pen-divider-desc" *ngIf="appGlobal.getPolicyStatus(policy) == 'pending'">{{ 'POLICY_STATUS.PENDING' | translate }}</p>
+              <p class="pen-divider-desc" *ngIf="appGlobal.getPolicyStatus(policy) == 'refused'">{{ 'POLICY_STATUS.REFUSED' | translate }}</p>
+            </div>
+          </div>
+        </ion-card>
+        <ion-card class="pen-pol-card" *ngIf="penCriticalInsurance?.length">
+          <ion-item class="insurance-item">
+            <ion-avatar item-start>
+              <img class="insurance-img" src="assets/icon/icCriticalIllnessInsuranceLine.png">
+            </ion-avatar>
+            <p class="pen-critical-insurance-txt">{{ 'GENERIC.CRITICAL_ILLNESS_INSURANCE_CAPS' | translate }}</p>
+          </ion-item>
+          <div *ngFor="let policy of penCriticalInsurance">
+            <ion-item class="pen-zurich-img-item" (click)="goPolicy(policy)">
+              <ion-avatar item-start>
+                <img class="zurich-img" src="assets/imgs/company_logos/{{policy?.company}}.png">
+              </ion-avatar>
+              <p class="pen-policy-name">{{policy?.company_name}}</p>
+              <div class="pen-item-line">
+                <div class="pen-coverage">
+                  <div class="pen-coverage-txt">{{ 'GENERIC.COVERAGE' | translate }}</div>
+                  <div class="pen-coverage-dollar">{{policy?.details?.data?.death_capital ? appGlobal.priceFormatRound(policy?.details?.data?.death_capital) : appGlobal.priceFormatRound(policy?.details?.data?.base_capital)}}</div>
+                </div>
+                <div class="pen-payment">
+                  <div class="pen-payment-txt">{{ 'GENERIC.PAYMENT' | translate }}</div>
+                  <div class="pen-payment-month">
+                    <p class="pen-dollar-txt">{{appGlobal.priceFormat(policy?.details?.data?.monthly_payment)}}&nbsp;</p>
+                    <p class="pen-month-txt">{{ 'GENERIC.PER_MONTH' | translate }}</p>
+                  </div>
+                </div>
+              </div>
+              <button class="pen-arrow-btn" clear ion-button icon-only item-end>
+                <ion-icon name="arrow-forward"></ion-icon>
+              </button>
+            </ion-item>
+            <div class="pen-divider">
+              <p class="pen-divider-date">{{lastActiveDate(policy)}}</p>
+              <p class="pen-divider-desc" *ngIf="appGlobal.getPolicyStatus(policy) == 'in force'">{{ 'POLICY_STATUS.IN_FORCE' | translate }}</p>
+              <p class="pen-divider-desc" *ngIf="appGlobal.getPolicyStatus(policy) == 'canceled'">{{ 'POLICY_STATUS.CANCELLED' | translate }}</p>
+              <p class="pen-divider-desc" *ngIf="appGlobal.getPolicyStatus(policy) == 'pending'">{{ 'POLICY_STATUS.PENDING' | translate }}</p>
+              <p class="pen-divider-desc" *ngIf="appGlobal.getPolicyStatus(policy) == 'refused'">{{ 'POLICY_STATUS.REFUSED' | translate }}</p>
+            </div>
+          </div>
+        </ion-card>
+        <ion-card class="pen-pol-card" *ngIf="penTravelInsurance?.length">
+          <ion-item class="insurance-item">
+            <ion-avatar item-start>
+              <img class="insurance-img" src="assets/icon/icTravelInsuranceLine.png">
+            </ion-avatar>
+            <p class="pen-travel-insurance-txt">{{ 'GENERIC.TRAVEL_INSURANCE_CAPS' | translate }}</p>
+          </ion-item>
+          <div *ngFor="let policy of penTravelInsurance">
+            <ion-item class="pen-zurich-img-item" (click)="goPolicy(policy)">
+              <ion-avatar item-start>
+                <img class="zurich-img" src="assets/imgs/company_logos/{{policy?.company}}.png">
+              </ion-avatar>
+              <p class="pen-policy-name">{{policy?.company_name}}</p>
+              <div class="pen-item-line">
+                <div class="pen-coverage">
+                  <div class="pen-coverage-txt">{{ 'GENERIC.COVERAGE' | translate }}</div>
+                  <div class="pen-coverage-dollar">{{policy?.details?.data?.death_capital ? appGlobal.priceFormatRound(policy?.details?.data?.death_capital) : appGlobal.priceFormatRound(policy?.details?.data?.base_capital)}}</div>
+                </div>
+                <div class="pen-payment">
+                  <div class="pen-payment-txt">{{ 'GENERIC.PAYMENT' | translate }}</div>
+                  <div class="pen-payment-month">
+                    <p class="pen-dollar-txt">{{appGlobal.priceFormat(policy?.details?.data?.monthly_payment)}}&nbsp;</p>
+                    <p class="pen-month-txt">{{ 'GENERIC.PER_MONTH' | translate }}</p>
+                  </div>
+                </div>
+              </div>
+              <button class="pen-arrow-btn" clear ion-button icon-only item-end>
+                <ion-icon name="arrow-forward"></ion-icon>
+              </button>
+            </ion-item>
+            <div class="pen-divider">
+              <p class="pen-divider-date">{{lastActiveDate(policy)}}</p>
+              <p class="pen-divider-desc" *ngIf="appGlobal.getPolicyStatus(policy) == 'in force'">{{ 'POLICY_STATUS.IN_FORCE' | translate }}</p>
+              <p class="pen-divider-desc" *ngIf="appGlobal.getPolicyStatus(policy) == 'canceled'">{{ 'POLICY_STATUS.CANCELLED' | translate }}</p>
+              <p class="pen-divider-desc" *ngIf="appGlobal.getPolicyStatus(policy) == 'pending'">{{ 'POLICY_STATUS.PENDING' | translate }}</p>
+              <p class="pen-divider-desc" *ngIf="appGlobal.getPolicyStatus(policy) == 'refused'">{{ 'POLICY_STATUS.REFUSED' | translate }}</p>
+            </div>
+          </div>
+        </ion-card>
+      </ion-list>
+    </div>
+  </div>
 </ion-content>

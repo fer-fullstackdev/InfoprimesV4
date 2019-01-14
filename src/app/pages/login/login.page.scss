@@ -1,0 +1,122 @@
+.logo-content {
+  padding-top: 82px;
+}
+.logo-img {
+  width: 192px;
+}
+.welcome-txt {
+  padding-top: 35px;
+  padding-left: 34px;
+  color: #2F9AE1;
+  font-size: 24px;
+  font-weight: 600;
+}
+.login-form .item {
+  padding: 6px 0px 0px 0px;
+}
+.login-form .item-inner {
+  border-bottom: 1.5px solid #F4F6F8 !important;
+}
+.login-form ion-label {
+  color: #768CA1 !important;
+  font-size: 13px !important;
+}
+.login-form {
+  padding-top: 15px;
+  padding-left: 34px;
+  padding-right: 34px;
+}
+.login-form .password-input .text-input {
+  letter-spacing: 11px;
+}
+.login-form .text-input {
+  color: #364A5D;
+  font-weight: 700;
+}
+.signin-btn {
+  width: 223px;
+  margin-top: 27px;
+  background: #19A4F6;
+  height: 50px;
+  font-weight: 800;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+.flex-section {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.full-height {
+  height: 100%;
+}
+.bottom-section {
+  text-align: center;
+  padding-top: 27px;
+}
+.getstarted-section {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.no-account {
+  color: #768CA1;
+  font-size: 14px;
+}
+.getstarted {
+  text-decoration: underline;
+  padding-left: 14px;
+  color: #2F9AE1;
+  font-weight: 700;
+  font-size: 14px;
+}
+.forgot-password {
+  font-size: 14px;
+  color: #2F9AE1;
+  text-decoration: underline;
+  padding-bottom: 16px;
+}
+.validation-error {
+  padding: 0px !important;
+  ion-label {
+    color: #F93535 !important;
+    font-size: 11px !important;
+    margin-top: 3px !important;
+    margin-bottom: 0px !important;
+  }
+  min-height: 0px !important;
+}
+.invalid-input-error {
+  border-bottom: solid 2px #F93535 !important;
+  .item-inner {
+    border-bottom: none !important;
+  }
+}
+.item.item[no-lines] .item-inner {
+  border: none !important;
+}
+.item-input.ng-invalid.item-input-has-focus,
+.item-input.ng-invalid.item-input-has-focus.item-input-has-value {
+  border-bottom: solid 2px #19A4F6 !important;
+  .item-inner {
+    border-bottom: none !important;
+    box-shadow: none;
+  }
+}
+.item-input.ng-valid.item-input-has-focus.input-has-value {
+  border-bottom: solid 2px #19A4F6 !important;
+  .item-inner {
+    border-bottom: none !important;
+    box-shadow: none;
+  }
+}
+.item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus):not(.item-input-has-focus) {
+  .item-inner {
+    box-shadow: none;
+  }
+}
+.item-md.item-input.ng-valid.item-input-has-value:not(.input-has-focus):not(.item-input-has-focus) .item-inner,
+.item-md.item-input.ng-valid.input-has-value:not(.input-has-focus):not(.item-input-has-focus) {
+  .item-inner {
+    box-shadow: none;
+  }
+}

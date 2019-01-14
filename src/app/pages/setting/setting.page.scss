@@ -1,0 +1,119 @@
+.header-section {
+  background: linear-gradient(#2B9AE6, #239CEC);
+  top: 0px;
+  position: fixed;
+  height: 68px;
+  width: 100%;
+  justify-content: space-between;
+  z-index: 10000;
+}
+.header-item {
+  background: none;
+  padding-left: 9px;
+  padding-right: 9px;
+  padding-top: 31px;
+  display: flex;
+  justify-content: baseline;
+}
+.left-section {
+  display: flex;
+  flex-basis: 10%;
+}
+.middle-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+.right-section {
+  flex-basis: 10%;
+}
+.arrow-back-icon {
+  min-width: 1px !important;
+  background-color: transparent;
+  width: 13px;
+  font-size: 22px !important;
+}
+.title-section {
+  color: white;
+  font-weight: 800;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+.main-content {
+  margin-top: 67px;
+}
+.profile-info-item {
+  border-bottom: solid 1.4px #E7F0F6 !important;
+  .item-inner {
+    border: none !important;
+    font-size: 14px;
+    color: #90A9C1;
+  }
+}
+.setting-item {
+  padding-left: 0px !important;
+  .item-inner {
+    border-bottom: solid 1.4px #E7F0F6 !important;
+  }
+  ion-label {
+    padding-left: 18px;
+    font-size: 14px;
+    color: #90A9C1;
+    white-space: normal;
+    width: 241px;
+  }
+  .monthly {
+    margin-top: 3px !important;
+    color: #364A5D !important;
+  }
+  .input-wrapper {
+    display: block !important;
+    width: 150px !important;
+  }
+  .mmdd {
+    margin-top: 3px !important;
+    color: #90A9C1 !important;
+  }
+}
+.arrow-icon {
+  color: #CAD8E5;
+  font-size: 22px;
+}
+.toggle-icon {
+  background-color: #DAEEFC !important;
+}
+.toggle-inner {
+  background-color: #2C9AE4 !important;
+}
+.item-inner {
+  padding-top: 4px;
+}
+.signout-btn {
+  font-family: 'Muli';
+  height: 30px;
+  background: #19A4F6;
+  font-size: 16px;
+  text-transform: uppercase;
+  padding: 0px 10px
+}
+.language-item, .leadid-item {
+  border-bottom: solid 1.4px #E7F0F6 !important;
+  ion-label {
+    color: #90A9C1 !important;
+    font-size: 14px;
+  }
+  .select-icon {
+    display: none;
+  }
+  .arrow-down-icon {
+    width: 0.5em;
+    color: #b6c4d2;
+  }
+  .select-text {
+    color: #364A5D !important;
+  }
+  .item-inner {
+    border: none !important;
+  }
+}

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @Component({
   selector: 'app-paperwork',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaperworkPage implements OnInit {
 
-  constructor() { }
+  constructor(public navCtrl: NavController,
+              public navParams: NavParams) { }
 
   ngOnInit() {
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad PaperworkPage');
+  }
+
+  goBack() {
+    this.navCtrl.pop();
   }
 
 }
