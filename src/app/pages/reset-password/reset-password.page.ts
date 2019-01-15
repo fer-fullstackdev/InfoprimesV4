@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from '@ionic/angular';
+import { NavController, NavParams } from '@ionic/angular';
 
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ApiProvider } from '../../providers/api/api';
-import { UiUtilsProvider } from '../../providers/ui-utils/ui-utils';
+import { ApiService } from '../../services/api/api.service';
+import { UiUtilsService } from '../../services/ui-utils/ui-utils.service';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -19,9 +19,9 @@ export class ResetPasswordPage implements OnInit {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              private apiService: ApiProvider,
+              private apiService: ApiService,
               public translate: TranslateService,
-              private uiUtility: UiUtilsProvider) {
+              private uiUtility: UiUtilsService) {
 
   }
 

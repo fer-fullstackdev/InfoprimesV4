@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, App } from '@ionic/angular';
+import { NavController, NavParams, App } from '@ionic/angular';
 
-import { TabsPage } from '../tabs/tabs';
+import { TabsPage } from '../tabs/tabs.page';
 
 @Component({
   selector: 'app-confirmation',

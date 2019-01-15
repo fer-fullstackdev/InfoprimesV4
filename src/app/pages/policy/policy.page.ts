@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, App } from '@ionic/angular';
+import { NavController, NavParams, App } from '@ionic/angular';
 
-import { PolicyStatusPage } from '../policy-status/policy-status';
-import { HouseholdProfilePage } from '../household-profile/household-profile';
-import { PaperworkPage } from '../paperwork/paperwork';
-import { TabsPage } from '../tabs/tabs';
+import { PolicyStatusPage } from '../policy-status/policy-status.page';
+import { HouseholdProfilePage } from '../household-profile/household-profile.page';
+import { PaperworkPage } from '../paperwork/paperwork.page';
+import { TabsPage } from '../tabs/tabs.page';
 
-import { UiUtilsProvider } from '../../providers/ui-utils/ui-utils';
-import { ApiProvider } from '../../providers/api/api';
+import { UiUtilsService } from '../../services/ui-utils/ui-utils.service';
+import { ApiService } from '../../services/api/api.service';
 
 import * as _ from 'lodash';
 import * as moment from 'moment';
 import { AppGlobals } from '../../shared/app.globals';
-import { UserProvider } from '../../providers/user/user';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'app-policy',
@@ -27,9 +27,9 @@ export class PolicyPage implements OnInit {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public appCtrl: App,
-              public uiUtility: UiUtilsProvider,
-              public apiService: ApiProvider,
-              public userService: UserProvider,
+              public uiUtility: UiUtilsService,
+              public apiService: ApiService,
+              public userService: UserService,
               public appGlobal: AppGlobals) {
     this.init();
   }

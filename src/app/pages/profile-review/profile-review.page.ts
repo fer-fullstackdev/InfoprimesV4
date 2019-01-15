@@ -1,19 +1,19 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, Slides, ModalController } from '@ionic/angular';
+import { NavController, NavParams, Slides, ModalController } from '@ionic/angular';
 import { Http, Headers } from '@angular/http';
 
-import { ConfirmationPage } from '../confirmation/confirmation';
-import { ProfileEditPage } from '../profile-edit/profile-edit';
-import { MortgageLoanEditPage } from '../mortgage-loan-edit/mortgage-loan-edit';
-import { InsuranceInvestEditPage } from '../insurance-invest-edit/insurance-invest-edit';
-import { AssetsEditPage } from '../assets-edit/assets-edit';
-import { ProfessionEditPage } from '../profession-edit/profession-edit';
-import { LiabilitiesEditPage } from '../liabilities-edit/liabilities-edit';
+import { ConfirmationPage } from '../confirmation/confirmation.page';
+import { ProfileEditPage } from '../profile-edit/profile-edit.page';
+import { MortgageLoanEditPage } from '../mortgage-loan-edit/mortgage-loan-edit.page';
+import { InsuranceInvestEditPage } from '../insurance-invest-edit/insurance-invest-edit.page';
+import { AssetsEditPage } from '../assets-edit/assets-edit.page';
+import { ProfessionEditPage } from '../profession-edit/profession-edit.page';
+import { LiabilitiesEditPage } from '../liabilities-edit/liabilities-edit.page';
 import { AppGlobals } from '../../shared/app.globals';
-import { UserProvider } from '../../providers/user/user';
+import { UserService } from '../../services/user/user.service';
 
 import * as _ from 'lodash';
-import { ApiProvider } from '../../providers/api/api';
+import { ApiService } from '../../services/api/api.service';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -67,9 +67,9 @@ export class ProfileReviewPage implements OnInit {
               public navParams: NavParams,
               public modalCtrl: ModalController,
               private http: Http,
-              public apiService: ApiProvider,
+              public apiService: ApiService,
               public appGlobal: AppGlobals,
-              public userService: UserProvider,
+              public userService: UserService,
               private _elementRef : ElementRef,
               public translate: TranslateService) {
     this.headers = new Headers({

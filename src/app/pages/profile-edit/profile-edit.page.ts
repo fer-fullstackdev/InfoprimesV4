@@ -1,9 +1,9 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, Select } from '@ionic/angular';
+import { NavController, NavParams, ViewController, Select } from '@ionic/angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { AppGlobals } from '../../shared/app.globals';
 import { TranslateService } from '@ngx-translate/core';
-import { UserProvider } from '../../providers/user/user';
+import { UserService } from '../../services/user/user.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import * as _ from 'lodash';
@@ -54,7 +54,7 @@ export class ProfileEditPage implements OnInit {
               public appGlobal: AppGlobals,
               private camera: Camera,
               private translate: TranslateService,
-              private userService: UserProvider) {
+              private userService: UserService) {
     this.type = this.navParams.get('type');
     this.action = this.navParams.get('action');
     this.data = this.navParams.get('data');

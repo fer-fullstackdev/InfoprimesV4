@@ -1,5 +1,5 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, Select } from '@ionic/angular';
+import { NavController, NavParams, ViewController, Select } from '@ionic/angular';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController } from '@ionic/angular';
+import { NavController, NavParams, ViewController } from '@ionic/angular';
 import { Keyboard } from '@ionic-native/keyboard';
 
 @Component({
@@ -15,7 +15,7 @@ export class AssetsEditPage implements OnInit {
               public navParams: NavParams,
               public viewCtrl: ViewController,
               private keyboard: Keyboard) {
-    this.keyboard.hideKeyboardAccessoryBar(false);
+    this.keyboard.hideFormAccessoryBar(false);
     this.action = this.navParams.get('action');
     this.data   = this.navParams.get('data');
     this.init();
@@ -32,7 +32,7 @@ export class AssetsEditPage implements OnInit {
   }
 
   close() {
-    this.keyboard.hideKeyboardAccessoryBar(true);
+    this.keyboard.hideFormAccessoryBar(true);
     this.viewCtrl.dismiss();
   }
 

@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from '@ionic/angular';
+import { NavController, NavParams, ModalController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { TouchID } from '@ionic-native/touch-id';
 import { TranslateService } from '@ngx-translate/core';
 
-import { TabsPage } from '../tabs/tabs';
-import { RegisterPage } from '../register/register';
-import { ResetPasswordPage } from '../reset-password/reset-password';
-import { TouchidPage } from '../touchid/touchid';
-import { PasscodePage } from '../passcode/passcode';
+import { TabsPage } from '../tabs/tabs.page';
+import { RegisterPage } from '../register/register.page';
+import { ResetPasswordPage } from '../reset-password/reset-password.page';
+import { TouchidPage } from '../touchid/touchid.page';
+import { PasscodePage } from '../passcode/passcode.page';
 
-import { ApiProvider } from '../../providers/api/api';
-import { UiUtilsProvider } from '../../providers/ui-utils/ui-utils';
+import { ApiService } from '../../services/api/api.service';
+import { UiUtilsService } from '../../services/ui-utils/ui-utils.service';
 
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AppGlobals } from '../../shared/app.globals';
-import { UserProvider } from '../../providers/user/user';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'app-login',
@@ -32,9 +32,9 @@ export class LoginPage implements OnInit {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public translate: TranslateService,
-              private apiService: ApiProvider,
-              private uiUtility: UiUtilsProvider,
-              private userService: UserProvider,
+              private apiService: ApiService,
+              private uiUtility: UiUtilsService,
+              private userService: UserService,
               private storage: Storage,
               private touchId: TouchID,
               private appGlobal: AppGlobals,

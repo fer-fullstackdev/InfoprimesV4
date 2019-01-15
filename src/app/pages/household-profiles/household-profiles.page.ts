@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from '@ionic/angular';
+import { NavController, NavParams } from '@ionic/angular';
 
-import { ApiProvider } from '../../providers/api/api';
-import { UiUtilsProvider } from '../../providers/ui-utils/ui-utils';
+import { ApiService } from '../../services/api/api.service';
+import { UiUtilsService } from '../../services/ui-utils/ui-utils.service';
 
-import { ProfileReviewPage } from '../profile-review/profile-review';
-import { HouseholdProfilePage } from '../household-profile/household-profile';
+import { ProfileReviewPage } from '../profile-review/profile-review.page';
+import { HouseholdProfilePage } from '../household-profile/household-profile.page';
 
 import * as _ from 'lodash';
-import { UserProvider } from '../../providers/user/user';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'app-household-profiles',
@@ -24,9 +24,9 @@ export class HouseholdProfilesPage implements OnInit {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public apiService: ApiProvider,
-              public userService: UserProvider,
-              public uiUtility: UiUtilsProvider) {
+              public apiService: ApiService,
+              public userService: UserService,
+              public uiUtility: UiUtilsService) {
     this.init();  
   }
 

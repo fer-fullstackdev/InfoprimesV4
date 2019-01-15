@@ -1,8 +1,8 @@
 import { Component, ViewChild, Input, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, Select } from '@ionic/angular';
+import { NavController, NavParams, Select } from '@ionic/angular';
 
-import { UserProvider } from '../../providers/user/user';
-import { PolicyPage } from '../policy/policy';
+import { UserService } from '../../services/user/user.service';
+import { PolicyPage } from '../policy/policy.page';
 import { AppGlobals } from '../../shared/app.globals';
 
 import * as _ from 'lodash';
@@ -46,7 +46,7 @@ export class InsurancePage implements OnInit {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public userService: UserProvider,
+              public userService: UserService,
               public appGlobal: AppGlobals) {
     this.init();
   }

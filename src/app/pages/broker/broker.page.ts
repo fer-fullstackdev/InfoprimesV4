@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform } from '@ionic/angular';
-import { UiUtilsProvider } from '../../providers/ui-utils/ui-utils';
-import { ApiProvider } from '../../providers/api/api';
+import { NavController, NavParams, Platform } from '@ionic/angular';
+import { UiUtilsService } from '../../services/ui-utils/ui-utils.service';
+import { ApiService } from '../../services/api/api.service';
 
 import { CallNumber } from '@ionic-native/call-number';
 import { SMS } from '@ionic-native/sms';
@@ -10,7 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
 
 import * as _ from 'lodash';
 import { AppGlobals } from '../../shared/app.globals';
-import { UserProvider } from '../../providers/user/user';
+import { UserService } from '../../services/user/user.service';
 
 declare var cordova;
 
@@ -25,14 +25,14 @@ export class BrokerPage implements OnInit {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public uiUtility: UiUtilsProvider,
-              public apiService: ApiProvider,
+              public uiUtility: UiUtilsService,
+              public apiService: ApiService,
               private sms: SMS,
               private emailComposer: EmailComposer,
               private callNumber: CallNumber,
               private platform: Platform,
               public translate: TranslateService,
-              public userService: UserProvider,
+              public userService: UserService,
               private appGlobal: AppGlobals) {
 
   }

@@ -1,8 +1,8 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, Select } from '@ionic/angular';
+import { NavController, NavParams, ViewController, Select } from '@ionic/angular';
 import { Http, Headers } from '@angular/http';
 import * as _ from 'lodash';
-import { UserProvider } from '../../providers/user/user';
+import { UserService } from '../../services/user/user.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -31,7 +31,7 @@ export class InsuranceInvestEditPage implements OnInit {
               public navParams: NavParams,
               private http: Http,
               public viewCtrl: ViewController,
-              private userService: UserProvider) {
+              private userService: UserService) {
     this.action = this.navParams.get('action');
     this.data   = this.navParams.get('data');
     this.headers = new Headers({

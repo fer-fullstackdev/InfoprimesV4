@@ -1,18 +1,18 @@
 import { Component, NgZone, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from '@ionic/angular';
+import { NavController, NavParams, ModalController } from '@ionic/angular';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Storage } from '@ionic/storage';
 import { TouchID } from '@ionic-native/touch-id';
 
-import { ApiProvider } from '../../providers/api/api';
-import { UiUtilsProvider } from '../../providers/ui-utils/ui-utils';
+import { ApiService } from '../../services/api/api.service';
+import { UiUtilsService } from '../../services/ui-utils/ui-utils.service';
 import { AppGlobals } from '../../shared/app.globals';
 
-import { LoginPage } from '../login/login';
-import { TabsPage } from '../tabs/tabs';
-import { TouchidPage } from '../touchid/touchid';
-import { PasscodePage } from '../passcode/passcode';
-import { UserProvider } from '../../providers/user/user';
+import { LoginPage } from '../login/login.page';
+import { TabsPage } from '../tabs/tabs.page';
+import { TouchidPage } from '../touchid/touchid.page';
+import { PasscodePage } from '../passcode/passcode.page';
+import { UserService } from '../../services/user/user.service';
 
 export class PasswordValidator {
   static validPassword(fc: FormControl){
@@ -45,14 +45,14 @@ export class ResetpasswordConfirmPage implements OnInit {
   private reset_token: string;
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              private apiService: ApiProvider,
+              private apiService: ApiService,
               private storage: Storage,
               private modalCtrl: ModalController,
               private touchId: TouchID,
               private appGlobal: AppGlobals,
-              private userService: UserProvider,
+              private userService: UserService,
               private zone: NgZone,
-              private uiUtility: UiUtilsProvider) {
+              private uiUtility: UiUtilsService) {
     this.email = this.navParams.get('email');
     this.reset_token = this.navParams.get('reset_token');
   }

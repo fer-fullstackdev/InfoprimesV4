@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from '@ionic/angular';
+import { NavController, NavParams } from '@ionic/angular';
 import { AppGlobals } from '../../shared/app.globals';
 import { TranslateService } from '@ngx-translate/core';
 

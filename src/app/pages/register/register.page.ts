@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, Platform } from '@ionic/angular';
+import { NavController, NavParams, Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { OneSignal } from '@ionic-native/onesignal';
 
-import { UiUtilsProvider } from '../../providers/ui-utils/ui-utils';
-import { ApiProvider } from '../../providers/api/api';
+import { UiUtilsService } from '../../services/ui-utils/ui-utils.service';
+import { ApiService } from '../../services/api/api.service';
 
-import { LoginPage } from '../login/login';
+import { LoginPage } from '../login/login.page';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { UserProvider } from '../../providers/user/user';
+import { UserService } from '../../services/user/user.service';
 
 export class PasswordValidator {
   static validPassword(fc: FormControl){
@@ -47,10 +47,10 @@ export class RegisterPage implements OnInit {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public uiUtility: UiUtilsProvider,
-              public apiService: ApiProvider,
+              public uiUtility: UiUtilsService,
+              public apiService: ApiService,
               private storage: Storage,
-              private userService: UserProvider,
+              private userService: UserService,
               private oneSignal: OneSignal,
               private platform: Platform) {
 

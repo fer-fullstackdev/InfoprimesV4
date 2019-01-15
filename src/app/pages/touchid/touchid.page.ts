@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, ModalController, Platform } from '@ionic/angular';
+import { NavController, NavParams, ViewController, ModalController, Platform } from '@ionic/angular';
 
 import { TouchID } from '@ionic-native/touch-id';
-import { PasscodePage } from '../passcode/passcode';
+import { PasscodePage } from '../passcode/passcode.page';
 import { AppGlobals } from '../../shared/app.globals';
 
 import { TranslateService } from '@ngx-translate/core';

@@ -1,12 +1,12 @@
 import { Component, ViewChild, Input, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, Slides, Select } from '@ionic/angular';
+import { NavController, NavParams, Slides, Select } from '@ionic/angular';
 
 import { Storage } from '@ionic/storage';
-import { ApiProvider } from '../../providers/api/api';
-import { UiUtilsProvider } from '../../providers/ui-utils/ui-utils';
-import { InsurancePage } from '../insurance/insurance';
-import { PolicyPage } from '../policy/policy';
-import { UserProvider } from '../../providers/user/user';
+import { ApiService } from '../../services/api/api.service';
+import { UiUtilsService } from '../../services/ui-utils/ui-utils.service';
+import { InsurancePage } from '../insurance/insurance.page';
+import { PolicyPage } from '../policy/policy.page';
+import { UserService } from '../../services/user/user.service';
 import { AppGlobals } from '../../shared/app.globals';
 
 import * as _ from 'lodash';
@@ -69,9 +69,9 @@ export class HomePage implements OnInit {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public apiService: ApiProvider,
-              public uiUtility: UiUtilsProvider,
-              public userService: UserProvider,
+              public apiService: ApiService,
+              public uiUtility: UiUtilsService,
+              public userService: UserService,
               private storage: Storage,
               public appGlobal: AppGlobals) { }
 

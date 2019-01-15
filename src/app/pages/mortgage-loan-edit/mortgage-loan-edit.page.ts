@@ -1,9 +1,9 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, Select } from '@ionic/angular';
+import { NavController, NavParams, ViewController, Select } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { AppGlobals } from '../../shared/app.globals';
 import { Http, Headers } from '@angular/http';
-import { UserProvider } from '../../providers/user/user';
+import { UserService } from '../../services/user/user.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import * as _ from 'lodash';
@@ -45,7 +45,7 @@ export class MortgageLoanEditPage implements OnInit {
               private translate: TranslateService,
               private http: Http,
               public appGlobal: AppGlobals,
-              private userService: UserProvider) {
+              private userService: UserService) {
     this.action = this.navParams.get('action');
     this.data = this.navParams.get('data');
     this.headers = new Headers({

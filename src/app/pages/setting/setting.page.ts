@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, App } from '@ionic/angular';
+import { NavController, NavParams, App } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 
-import { UiUtilsProvider } from '../../providers/ui-utils/ui-utils';
-import { ApiProvider } from '../../providers/api/api';
-import { LoginPage } from '../login/login';
-import { UserProvider } from '../../providers/user/user';
+import { UiUtilsService } from '../../services/ui-utils/ui-utils.service';
+import { ApiService } from '../../services/api/api.service';
+import { LoginPage } from '../login/login.page';
+import { UserService } from '../../services/user/user.service';
 
 import * as _ from 'lodash';
 import { AppGlobals } from '../../shared/app.globals';
@@ -25,9 +25,9 @@ export class SettingPage implements OnInit {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public appCtrl: App,
-              private uiUtility: UiUtilsProvider,
-              public apiService: ApiProvider,
-              public userService: UserProvider,
+              private uiUtility: UiUtilsService,
+              public apiService: ApiService,
+              public userService: UserService,
               public appGlobal: AppGlobals,
               public translate: TranslateService,
               private storage: Storage) {

@@ -1,16 +1,16 @@
 import { Component, NgZone, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, ViewController, ModalController, Platform } from '@ionic/angular';
+import { NavController, NavParams, ViewController, ModalController, Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 import { Vibration } from '@ionic-native/vibration';
 
-import { TouchidPage } from '../touchid/touchid';
-import { UiUtilsProvider } from '../../providers/ui-utils/ui-utils';
+import { TouchidPage } from '../touchid/touchid.page';
+import { UiUtilsService } from '../../services/ui-utils/ui-utils.service';
 
 import * as _ from 'lodash';
 import { AppGlobals } from '../../shared/app.globals';
 
 import { TranslateService } from '@ngx-translate/core';
-import { UserProvider } from '../../providers/user/user';
+import { UserService } from '../../services/user/user.service';
 import { TouchID } from '@ionic-native/touch-id';
 
 @Component({
@@ -30,12 +30,12 @@ export class PasscodePage implements OnInit {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private storage: Storage,
-              public uiUtility: UiUtilsProvider,
+              public uiUtility: UiUtilsService,
               private vibration: Vibration,
               private viewCtrl: ViewController,
               private appGlobalService: AppGlobals,
               private modalCtrl: ModalController,
-              private userService: UserProvider,
+              private userService: UserService,
               public translate: TranslateService,
               private zone: NgZone,
               private touchId: TouchID,

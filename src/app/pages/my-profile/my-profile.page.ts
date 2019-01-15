@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from '@ionic/angular';
+import { NavController, NavParams } from '@ionic/angular';
 
-import { ApiProvider } from '../../providers/api/api';
-import { UiUtilsProvider } from '../../providers/ui-utils/ui-utils';
+import { ApiService } from '../../services/api/api.service';
+import { UiUtilsService } from '../../services/ui-utils/ui-utils.service';
 
-import { SettingPage } from '../setting/setting';
-import { HouseholdProfilesPage } from '../household-profiles/household-profiles';
-import { ProfileReviewPage } from '../profile-review/profile-review';
-import { MyPoliciesPage } from '../my-policies/my-policies';
+import { SettingPage } from '../setting/setting.page';
+import { HouseholdProfilesPage } from '../household-profiles/household-profiles.page';
+import { ProfileReviewPage } from '../profile-review/profile-review.page';
+import { MyPoliciesPage } from '../my-policies/my-policies.page';
 import * as _ from 'lodash';
-import { HouseholdProfilePage } from '../household-profile/household-profile';
-import { UserProvider } from '../../providers/user/user';
+import { HouseholdProfilePage } from '../household-profile/household-profile.page';
+import { UserService } from '../../services/user/user.service';
 
 @Component({
   selector: 'app-my-profile',
@@ -23,9 +23,9 @@ export class MyProfilePage implements OnInit {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public apiService: ApiProvider,
-              public userService: UserProvider,
-              public uiUtility: UiUtilsProvider) { }
+              public apiService: ApiService,
+              public userService: UserService,
+              public uiUtility: UiUtilsService) { }
 
   ngOnInit() {
   }
