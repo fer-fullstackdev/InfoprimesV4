@@ -43,22 +43,22 @@ export class MyProfilePage implements OnInit {
   }
 
   goSetting() {
-    this.navCtrl.push(SettingPage);
+    // this.navCtrl.push(SettingPage);
   }
 
   goHouseholdProfiles() {
-    this.navCtrl.push(HouseholdProfilesPage);
+    // this.navCtrl.push(HouseholdProfilesPage);
   }
 
   goHouseholdProfile(contact: any) {
-    this.navCtrl.push(HouseholdProfilePage, {contact: contact});
+    // this.navCtrl.push(HouseholdProfilePage, {contact: contact});
   }
 
   goProfileReview() {
-    this.navCtrl.push(ProfileReviewPage);
+    // this.navCtrl.push(ProfileReviewPage);
   }
 
   goMyPolicies() {
-    this.navCtrl.push(MyPoliciesPage);
+    // this.navCtrl.push(MyPoliciesPage);
   }
 }

@@ -1,5 +1,5 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { NavController, NavParams, Select } from '@ionic/angular';
+import { NavController, NavParams, IonSelect } from '@ionic/angular';
 
 import { PolicyPage } from '../policy/policy.page';
 import { UiUtilsService } from '../../services/ui-utils/ui-utils.service';
@@ -15,7 +15,7 @@ import { AppGlobals } from '../../shared/app.globals';
   styleUrls: ['./my-policies.page.scss'],
 })
 export class MyPoliciesPage implements OnInit {
-  @ViewChild('contactListSelect') contactListSelect: Select;
+  @ViewChild('contactListSelect') contactListSelect: IonSelect;
   public contacts: Array<any> = [];
   public contact: any;
   public mainContact: any;
@@ -107,11 +107,11 @@ export class MyPoliciesPage implements OnInit {
   }
 
   goBack() {
-    this.navCtrl.pop();
+    // this.navCtrl.pop();
   }
 
   goPolicy(policy: any) {
-    this.navCtrl.push(PolicyPage, {policy: policy});
+    // this.navCtrl.push(PolicyPage, {policy: policy});
   }
 
   changeContact() {

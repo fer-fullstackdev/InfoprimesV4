@@ -3,9 +3,9 @@ import { NavController, NavParams, Platform } from '@ionic/angular';
 import { UiUtilsService } from '../../services/ui-utils/ui-utils.service';
 import { ApiService } from '../../services/api/api.service';
 
-import { CallNumber } from '@ionic-native/call-number';
-import { SMS } from '@ionic-native/sms';
-import { EmailComposer } from '@ionic-native/email-composer';
+import { CallNumber } from '@ionic-native/call-number/ngx';
+import { SMS } from '@ionic-native/sms/ngx';
+import { EmailComposer } from '@ionic-native/email-composer/ngx';
 import { TranslateService } from '@ngx-translate/core';
 
 import * as _ from 'lodash';

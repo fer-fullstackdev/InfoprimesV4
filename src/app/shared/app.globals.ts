@@ -6,7 +6,9 @@ import * as moment from 'moment';
 import * as numeral from 'numeral';
 import * as $ from 'jquery';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AppGlobals {
   private minYear = 1930;
   private maxYear = moment().year() + 20;

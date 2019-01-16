@@ -1,6 +1,6 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { NavController, NavParams, ViewController, Select } from '@ionic/angular';
-import { Camera, CameraOptions } from '@ionic-native/camera';
+import { NavController, NavParams, ModalController, IonSelect } from '@ionic/angular';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { AppGlobals } from '../../shared/app.globals';
 import { TranslateService } from '@ngx-translate/core';
 import { UserService } from '../../services/user/user.service';
@@ -28,11 +28,11 @@ export class PhoneNumberValidator {
 })
 export class ProfileEditPage implements OnInit {
   formGroup: FormGroup;
-  @ViewChild('monthSelect') monthSelect: Select;
-  @ViewChild('daySelect') daySelect: Select;
-  @ViewChild('yearSelect') yearSelect: Select;
-  @ViewChild('householdSelect') householdSelect: Select;
-  @ViewChild('smokerSelect') smokerSelect: Select;
+  @ViewChild('monthSelect') monthSelect: IonSelect;
+  @ViewChild('daySelect') daySelect: IonSelect;
+  @ViewChild('yearSelect') yearSelect: IonSelect;
+  @ViewChild('householdSelect') householdSelect: IonSelect;
+  @ViewChild('smokerSelect') smokerSelect: IonSelect;
   public type: string;
   public action: string;
   public title: string;
@@ -50,7 +50,7 @@ export class ProfileEditPage implements OnInit {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public viewCtrl: ViewController,
+              public modalCtrl: ModalController,
               public appGlobal: AppGlobals,
               private camera: Camera,
               private translate: TranslateService,
@@ -151,7 +151,7 @@ export class ProfileEditPage implements OnInit {
   }
 
   close() {
-    this.viewCtrl.dismiss();
+    this.modalCtrl.dismiss();
   }
 
   save() {

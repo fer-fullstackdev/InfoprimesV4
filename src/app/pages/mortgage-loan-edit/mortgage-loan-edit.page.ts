@@ -1,5 +1,5 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { NavController, NavParams, ViewController, Select } from '@ionic/angular';
+import { NavController, NavParams, ModalController, IonSelect } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { AppGlobals } from '../../shared/app.globals';
 import { Http, Headers } from '@angular/http';
@@ -15,12 +15,12 @@ import * as _ from 'lodash';
 })
 export class MortgageLoanEditPage implements OnInit {
   formGroup: FormGroup;
-  @ViewChild('loanTypeSelect') loanTypeSelect: Select;
-  @ViewChild('percentSelect') percentSelect: Select;
-  @ViewChild('monthSelect') monthSelect: Select;
-  @ViewChild('daySelect') daySelect: Select;
-  @ViewChild('yearSelect') yearSelect: Select;
-  @ViewChild('borrowersSelect') borrowersSelect: Select;
+  @ViewChild('loanTypeSelect') loanTypeSelect: IonSelect;
+  @ViewChild('percentSelect') percentSelect: IonSelect;
+  @ViewChild('monthSelect') monthSelect: IonSelect;
+  @ViewChild('daySelect') daySelect: IonSelect;
+  @ViewChild('yearSelect') yearSelect: IonSelect;
+  @ViewChild('borrowersSelect') borrowersSelect: IonSelect;
 
   private headers: Headers;
   public action: string;
@@ -41,7 +41,7 @@ export class MortgageLoanEditPage implements OnInit {
   public actionBtnAttempt: boolean = false;
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public viewCtrl: ViewController,
+              public modalCtrl: ModalController,
               private translate: TranslateService,
               private http: Http,
               public appGlobal: AppGlobals,
@@ -152,7 +152,7 @@ export class MortgageLoanEditPage implements OnInit {
   }
 
   close() {
-    this.viewCtrl.dismiss();
+    this.modalCtrl.dismiss();
   }
 
   save() {

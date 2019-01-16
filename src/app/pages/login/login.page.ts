@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams, ModalController } from '@ionic/angular';
+import { NavController, ModalController } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
-import { TouchID } from '@ionic-native/touch-id';
+import { TouchID } from '@ionic-native/touch-id/ngx';
 import { TranslateService } from '@ngx-translate/core';
+import { Router } from '@angular/router';
 
 import { TabsPage } from '../tabs/tabs.page';
 import { RegisterPage } from '../register/register.page';
@@ -29,16 +30,18 @@ export class LoginPage implements OnInit {
   public unauthorized: boolean = false;
   public submitAttempt: boolean = false;
 
-  constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public translate: TranslateService,
-              private apiService: ApiService,
-              private uiUtility: UiUtilsService,
-              private userService: UserService,
-              private storage: Storage,
-              private touchId: TouchID,
-              private appGlobal: AppGlobals,
-              private modalCtrl: ModalController) {
+  constructor(
+    public navCtrl: NavController,
+    public translate: TranslateService,
+    private apiService: ApiService,
+    private uiUtility: UiUtilsService,
+    private userService: UserService,
+    private storage: Storage,
+    private touchId: TouchID,
+    private appGlobal: AppGlobals,
+    private modalCtrl: ModalController,
+    private router: Router
+  ) {
     this.init();
   }
 
@@ -55,13 +58,7 @@ export class LoginPage implements OnInit {
     });
   }
 
-  init() {
-
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-  }
+  init() {}
 
   login() {
     this.submitAttempt = true;
@@ -91,6 +88,7 @@ export class LoginPage implements OnInit {
                 this.touchId.isAvailable()
                   .then(
                     (res) => {
+                      /*
                       let touchIdModal = this.modalCtrl.create(TouchidPage, {})
                       touchIdModal.present()
                         .then(res => {
@@ -99,8 +97,10 @@ export class LoginPage implements OnInit {
                       touchIdModal.onWillDismiss(res => {
                         this.navCtrl.setRoot(TabsPage);
                       });
+                      */
                     },
                     (err) => {
+                      /*
                       let passcodeModal = this.modalCtrl.create(PasscodePage, {})
                       passcodeModal.present()
                         .then(res => {
@@ -109,10 +109,11 @@ export class LoginPage implements OnInit {
                       passcodeModal.onWillDismiss(res => {
                         this.navCtrl.setRoot(TabsPage);
                       });
+                      */
                     }
                   );
               } else {
-                this.navCtrl.setRoot(RegisterPage, {registered: true, fromAppStart: true, sentEmail: sentEmail});
+                // this.navCtrl.setRoot(RegisterPage, {registered: true, fromAppStart: true, sentEmail: sentEmail});
               }
             },
             (e) => {
@@ -129,11 +130,12 @@ export class LoginPage implements OnInit {
   }
 
   goRegister() {
-    this.navCtrl.push(RegisterPage);
+    // this.navCtrl.push(RegisterPage);
   }
 
   resetPassword() {
-    this.navCtrl.push(ResetPasswordPage);
+    this.router.navigateByUrl('/reset-password')
+    // this.navCtrl.push(ResetPasswordPage);
   }
 
   changeAuthStatus(value) {

@@ -1,5 +1,5 @@
 import { Component, ViewChild, Input, OnInit } from '@angular/core';
-import { NavController, NavParams, Slides, Select } from '@ionic/angular';
+import { NavController, NavParams, IonSlides, IonSelect } from '@ionic/angular';
 
 import { Storage } from '@ionic/storage';
 import { ApiService } from '../../services/api/api.service';
@@ -18,8 +18,8 @@ import * as moment from 'moment';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
-  @ViewChild('slides') slides: Slides;
-  @ViewChild('contactListSelect') contactListSelect: Select;
+  @ViewChild('slides') slides: IonSlides;
+  @ViewChild('contactListSelect') contactListSelect: IonSelect;
 
   public policiesStatus: string = 'current';
   public lifeInsurance: Array<any> = [];
@@ -386,8 +386,11 @@ export class HomePage implements OnInit {
   }
 
   slideChanged() {
-    const slideIndex = this.slides.getActiveIndex();
-    this.slideIndex = slideIndex;
+    let slideIndex: number;
+    this.slides.getActiveIndex().then(index => {
+      slideIndex = index;
+    });
+    
     if(slideIndex == 4) {
       this.slides.lockSwipeToNext(true);
     } else {
@@ -537,7 +540,7 @@ export class HomePage implements OnInit {
   }
 
   goInsurance(type: string) {
-    this.navCtrl.push(InsurancePage, {type: type, allInsurances: this.insurances, contacts: this.contacts, isLead: this.isLead, contact: this.contact});
+    // this.navCtrl.push(InsurancePage, {type: type, allInsurances: this.insurances, contacts: this.contacts, isLead: this.isLead, contact: this.contact});
   }
 
   openContactList() {
@@ -551,7 +554,7 @@ export class HomePage implements OnInit {
   }
 
   goPolicy(policy: any) {
-    this.navCtrl.push(PolicyPage, {policy: policy});
+    // this.navCtrl.push(PolicyPage, {policy: policy});
   }
 
   goPending() {

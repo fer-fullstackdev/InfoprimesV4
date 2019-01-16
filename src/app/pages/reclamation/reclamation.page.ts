@@ -24,7 +24,7 @@ export class ReclamationPage implements OnInit {
   }
 
   goBack() {
-    this.navCtrl.pop();
+    // this.navCtrl.pop();
   }
 
   itemClick(type: string) {

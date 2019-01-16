@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams, ViewController, ModalController, Platform } from '@ionic/angular';
+import { NavController, NavParams, ModalController, Platform } from '@ionic/angular';
 
-import { TouchID } from '@ionic-native/touch-id';
+import { TouchID } from '@ionic-native/touch-id/ngx';
 import { PasscodePage } from '../passcode/passcode.page';
 import { AppGlobals } from '../../shared/app.globals';
 
@@ -18,12 +18,11 @@ export class TouchidPage implements OnInit {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private touchId: TouchID,
-              private viewCtrl: ViewController,
               private appGlobalService: AppGlobals,
               private modalCtrl: ModalController,
               public translate: TranslateService,
               platform: Platform) {
-    this.backButtonUnregister = platform.registerBackButtonAction(() => {});
+    // this.backButtonUnregister = platform.registerBackButtonAction(() => {});
     this.init();
   }
 
@@ -35,10 +34,12 @@ export class TouchidPage implements OnInit {
     if(this.navParams.get('resume')) {
       this.touchId.verifyFingerprintWithCustomPasswordFallbackAndEnterPasswordLabel('Unloack InfoPrimes', '')
         .then(res => {
+          /*
           this.navCtrl.pop()
             .then(res => {
               this.appGlobalService.isOpenModal = false;
             });
+          */
         })
         .then(e => { console.log(e); });
     }
@@ -55,19 +56,23 @@ export class TouchidPage implements OnInit {
   openTouchID() {
     this.touchId.verifyFingerprintWithCustomPasswordFallbackAndEnterPasswordLabel('Unloack InfoPrimes', '')
       .then(res => {
+        /*
         this.navCtrl.pop()
           .then(res => {
             this.appGlobalService.isOpenModal = false;
           });
+        */
       })
       .then(e => { console.log(e); });
   }
 
   goPasscodePage() {
+    /*
     this.modalCtrl.create(PasscodePage).present()
       .then(res => {
         this.navCtrl.remove(this.viewCtrl.index);
       });
+    */
   }
 
 }

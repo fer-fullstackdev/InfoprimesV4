@@ -73,6 +73,6 @@ export class PolicyStatusPage implements OnInit {
   }
 
   goBack() {
-    this.navCtrl.pop();
+    // this.navCtrl.pop();
   }
 }

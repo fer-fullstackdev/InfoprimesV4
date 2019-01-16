@@ -1,5 +1,5 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { NavController, NavParams, ViewController, Select } from '@ionic/angular';
+import { NavController, NavParams, ModalController, IonSelect } from '@ionic/angular';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -9,7 +9,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ProfessionEditPage implements OnInit {
   formGroup: FormGroup;
-  @ViewChild('employmentSelect') employmentSelect: Select;
+  @ViewChild('employmentSelect') employmentSelect: IonSelect;
   public data: any;
   public detailData: any;
   public company: string;
@@ -20,7 +20,7 @@ export class ProfessionEditPage implements OnInit {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public viewCtrl: ViewController) {
+              public modalCtrl: ModalController) {
     this.data = this.navParams.get('data');
     this.detailData = this.data.details.data;
     this.init();
@@ -55,7 +55,7 @@ export class ProfessionEditPage implements OnInit {
   }
 
   close() {
-    this.viewCtrl.dismiss();
+    this.modalCtrl.dismiss();
   }
 
   save() {

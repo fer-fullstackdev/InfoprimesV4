@@ -2,7 +2,7 @@ import { Component, NgZone, OnInit } from '@angular/core';
 import { NavController, NavParams, ModalController } from '@ionic/angular';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Storage } from '@ionic/storage';
-import { TouchID } from '@ionic-native/touch-id';
+import { TouchID } from '@ionic-native/touch-id/ngx';
 
 import { ApiService } from '../../services/api/api.service';
 import { UiUtilsService } from '../../services/ui-utils/ui-utils.service';
@@ -79,7 +79,7 @@ export class ResetpasswordConfirmPage implements OnInit {
   }
 
   goBack() {
-    this.navCtrl.setRoot(LoginPage);
+    // this.navCtrl.setRoot(LoginPage);
   }
 
   resetPWD() {
@@ -104,6 +104,7 @@ export class ResetpasswordConfirmPage implements OnInit {
               this.touchId.isAvailable()
                 .then(
                   (res) => {
+                    /*
                     let touchIdModal = this.modalCtrl.create(TouchidPage, {});
                     touchIdModal.present()
                       .then(res => {
@@ -112,8 +113,10 @@ export class ResetpasswordConfirmPage implements OnInit {
                     touchIdModal.onWillDismiss(res => {
                       this.navCtrl.setRoot(TabsPage);
                     });
+                    */
                   },
                   (err) => {
+                    /*
                     let passcodeModal = this.modalCtrl.create(PasscodePage, {})
                     passcodeModal.present()
                       .then(res => {
@@ -122,6 +125,7 @@ export class ResetpasswordConfirmPage implements OnInit {
                     passcodeModal.onWillDismiss(res => {
                       this.navCtrl.setRoot(TabsPage);
                     });
+                    */
                   }
                 );
 

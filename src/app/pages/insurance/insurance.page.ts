@@ -1,5 +1,5 @@
 import { Component, ViewChild, Input, OnInit } from '@angular/core';
-import { NavController, NavParams, Select } from '@ionic/angular';
+import { NavController, NavParams, IonSelect } from '@ionic/angular';
 
 import { UserService } from '../../services/user/user.service';
 import { PolicyPage } from '../policy/policy.page';
@@ -14,7 +14,7 @@ import * as $ from 'jquery';
   styleUrls: ['./insurance.page.scss'],
 })
 export class InsurancePage implements OnInit {
-  @ViewChild('contactListSelect') contactListSelect: Select;
+  @ViewChild('contactListSelect') contactListSelect: IonSelect;
 
   public type: string;
   public allInsurances: Array<any> = [];
@@ -283,11 +283,11 @@ export class InsurancePage implements OnInit {
         $('.animated.home-graphic.graphic-life .graphic-label-universal').css('opacity', '1');
       }
     }
-    this.navCtrl.pop();
+    // this.navCtrl.pop();
   }
 
   goPolicy(policy) {
-    this.navCtrl.push(PolicyPage, {policy: policy});
+    // this.navCtrl.push(PolicyPage, {policy: policy});
   }
 
   getItemBottomClass() {

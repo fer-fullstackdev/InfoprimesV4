@@ -19,7 +19,7 @@ export class PaperworkPage implements OnInit {
   }
 
   goBack() {
-    this.navCtrl.pop();
+    // this.navCtrl.pop();
   }
 
 }

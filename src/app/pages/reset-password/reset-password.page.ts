@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
 
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../../services/api/api.service';
@@ -17,11 +17,12 @@ export class ResetPasswordPage implements OnInit {
   public emailSent: boolean = false;
   public submitAttempt: boolean = false;
 
-  constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              private apiService: ApiService,
-              public translate: TranslateService,
-              private uiUtility: UiUtilsService) {
+  constructor(
+    public navCtrl: NavController,
+    private apiService: ApiService,
+    public translate: TranslateService,
+    private uiUtility: UiUtilsService
+  ) {
 
   }
 
@@ -35,7 +36,7 @@ export class ResetPasswordPage implements OnInit {
   }
 
   goBack() {
-    this.navCtrl.pop();
+    // this.navCtrl.pop();
   }
 
   resetPassword() {

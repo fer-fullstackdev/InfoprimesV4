@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams, Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
-import { OneSignal } from '@ionic-native/onesignal';
+import { OneSignal } from '@ionic-native/onesignal/ngx';
 
 import { UiUtilsService } from '../../services/ui-utils/ui-utils.service';
 import { ApiService } from '../../services/api/api.service';
@@ -86,9 +86,9 @@ export class RegisterPage implements OnInit {
 
   goBack(fromAppStart) {
     if(fromAppStart) {
-      this.navCtrl.setRoot(LoginPage);
+      // this.navCtrl.setRoot(LoginPage);
     } else {
-      this.navCtrl.pop();
+      // this.navCtrl.pop();
     }
   }
 

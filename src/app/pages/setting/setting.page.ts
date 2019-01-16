@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams, App } from '@ionic/angular';
+// import { NavController, NavParams, App } from '@ionic/angular';
+import { NavController, NavParams } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
 
 import { UiUtilsService } from '../../services/ui-utils/ui-utils.service';
@@ -24,7 +25,6 @@ export class SettingPage implements OnInit {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public appCtrl: App,
               private uiUtility: UiUtilsService,
               public apiService: ApiService,
               public userService: UserService,
@@ -48,7 +48,7 @@ export class SettingPage implements OnInit {
   }
 
   goBack() {
-    this.navCtrl.pop();
+    // this.navCtrl.pop();
   }
 
   confirmLogout() {
@@ -59,7 +59,7 @@ export class SettingPage implements OnInit {
           that.userService.setUserLeadId('', []);
           that.appGlobal.passedAuthPhases = false;
           that.userService.userID = '';
-          that.appCtrl.getRootNav().setRoot(LoginPage);
+          // that.appCtrl.getRootNav().setRoot(LoginPage);
         })
         .catch(e => { console.log(e); });
     }

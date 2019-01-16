@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams, ViewController } from '@ionic/angular';
-import { Keyboard } from '@ionic-native/keyboard';
+import { NavController, NavParams, ModalController } from '@ionic/angular';
+import { Keyboard } from '@ionic-native/keyboard/ngx';
 
 @Component({
   selector: 'app-assets-edit',
@@ -13,7 +13,7 @@ export class AssetsEditPage implements OnInit {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public viewCtrl: ViewController,
+              public modalCtrl: ModalController,
               private keyboard: Keyboard) {
     this.keyboard.hideFormAccessoryBar(false);
     this.action = this.navParams.get('action');
@@ -33,7 +33,7 @@ export class AssetsEditPage implements OnInit {
 
   close() {
     this.keyboard.hideFormAccessoryBar(true);
-    this.viewCtrl.dismiss();
+    this.modalCtrl.dismiss();
   }
 
   save() {

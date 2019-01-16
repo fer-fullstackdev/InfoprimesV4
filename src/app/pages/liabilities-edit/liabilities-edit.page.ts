@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams, ViewController } from '@ionic/angular';
+import { NavController, NavParams, ModalController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { AppGlobals } from '../../shared/app.globals';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -25,7 +25,7 @@ export class LiabilitiesEditPage implements OnInit {
               public navParams: NavParams,
               public appGlobal: AppGlobals,
               private translate: TranslateService,
-              public viewCtrl: ViewController) {
+              public modalCtrl: ModalController) {
     this.data = this.navParams.get('data');
     this.type = this.navParams.get('type');
     this.index = this.navParams.get('index');
@@ -66,7 +66,7 @@ export class LiabilitiesEditPage implements OnInit {
   }
 
   close() {
-    this.viewCtrl.dismiss();
+    this.modalCtrl.dismiss();
   }
 
   save() {

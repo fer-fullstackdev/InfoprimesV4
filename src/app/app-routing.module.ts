@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', loadChildren: './pages/tabs/tabs.module#TabsPageModule' },
+  // { path: '', loadChildren: './pages/tabs/tabs.module#TabsPageModule' },
   { path: 'assets-edit', loadChildren: './pages/assets-edit/assets-edit.module#AssetsEditPageModule' },
   { path: 'broker', loadChildren: './pages/broker/broker.module#BrokerPageModule' },
   { path: 'confirmation', loadChildren: './pages/confirmation/confirmation.module#ConfirmationPageModule' },
@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: 'reclamation', loadChildren: './pages/reclamation/reclamation.module#ReclamationPageModule' },
   { path: 'register', loadChildren: './pages/register/register.module#RegisterPageModule' },
   { path: 'reset-password', loadChildren: './pages/reset-password/reset-password.module#ResetPasswordPageModule' },
-  { path: 'resetpassword-confirm', loadChildren: './pages/resetpassword-confirm/resetpassword-confirm.module#ResetpasswordConfirmPageModule' },
+  { path: 'resetpassword-confirm/:email/:reset_token', loadChildren: './pages/resetpassword-confirm/resetpassword-confirm.module#ResetpasswordConfirmPageModule' },
   { path: 'setting', loadChildren: './pages/setting/setting.module#SettingPageModule' },
   { path: 'touchid', loadChildren: './pages/touchid/touchid.module#TouchidPageModule' }
 ];

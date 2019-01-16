@@ -1,5 +1,5 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
-import { NavController, NavParams, ViewController, Select } from '@ionic/angular';
+import { NavController, NavParams, ModalController, IonSelect } from '@ionic/angular';
 import { Http, Headers } from '@angular/http';
 import * as _ from 'lodash';
 import { UserService } from '../../services/user/user.service';
@@ -12,7 +12,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class InsuranceInvestEditPage implements OnInit {
   formGroup: FormGroup;
-  @ViewChild('typeSelect') typeSelect: Select;
+  @ViewChild('typeSelect') typeSelect: IonSelect;
 
   private headers: Headers;
   public action: string;
@@ -30,7 +30,7 @@ export class InsuranceInvestEditPage implements OnInit {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private http: Http,
-              public viewCtrl: ViewController,
+              public modalCtrl: ModalController,
               private userService: UserService) {
     this.action = this.navParams.get('action');
     this.data   = this.navParams.get('data');
@@ -92,7 +92,7 @@ export class InsuranceInvestEditPage implements OnInit {
   }
 
   close() {
-    this.viewCtrl.dismiss();
+    this.modalCtrl.dismiss();
   }
 
   save() {

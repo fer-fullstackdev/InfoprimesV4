@@ -1,7 +1,7 @@
 import { Component, NgZone, OnInit } from '@angular/core';
-import { NavController, NavParams, ViewController, ModalController, Platform } from '@ionic/angular';
+import { NavController, ModalController, Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage';
-import { Vibration } from '@ionic-native/vibration';
+import { Vibration } from '@ionic-native/vibration/ngx';
 
 import { TouchidPage } from '../touchid/touchid.page';
 import { UiUtilsService } from '../../services/ui-utils/ui-utils.service';
@@ -11,7 +11,7 @@ import { AppGlobals } from '../../shared/app.globals';
 
 import { TranslateService } from '@ngx-translate/core';
 import { UserService } from '../../services/user/user.service';
-import { TouchID } from '@ionic-native/touch-id';
+import { TouchID } from '@ionic-native/touch-id/ngx';
 
 @Component({
   selector: 'app-passcode',
@@ -23,37 +23,29 @@ export class PasscodePage implements OnInit {
   public selectedIndexArrBackup: Array<any> = [];
   public isPasscode: boolean;
   progressElm: HTMLElement;
-  private backButtonUnregister: any;
   private passcodeObj: {};
   public touchIdAvailable: boolean = false;
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              private storage: Storage,
-              public uiUtility: UiUtilsService,
-              private vibration: Vibration,
-              private viewCtrl: ViewController,
-              private appGlobalService: AppGlobals,
-              private modalCtrl: ModalController,
-              private userService: UserService,
-              public translate: TranslateService,
-              private zone: NgZone,
-              private touchId: TouchID,
-              platform: Platform) {
-    this.backButtonUnregister = platform.registerBackButtonAction(() => {});
+    private storage: Storage,
+    public uiUtility: UiUtilsService,
+    private vibration: Vibration,
+    private appGlobalService: AppGlobals,
+    private modalCtrl: ModalController,
+    private userService: UserService,
+    public translate: TranslateService,
+    private zone: NgZone,
+    private touchId: TouchID,
+    private platform: Platform
+  ) {
     this.init();
     this.checkPasscode();
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   ionViewWillLeave() {
-    this.backButtonUnregister();
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PasscodePage');
+    this.platform.backButton.subscribe(() => {});
   }
 
   init() {
@@ -118,10 +110,9 @@ export class PasscodePage implements OnInit {
           if(_.isEqual(this.selectedIndexArr, this.selectedIndexArrBackup)) {
             this.passcodeObj[this.userService.userID] = passcodeStr;
             this.storage.set('passcodeObj', JSON.stringify(this.passcodeObj));
-            this.navCtrl.pop()
-              .then(res => {
-                this.appGlobalService.isOpenModal = false;
-              });
+            
+            this.modalCtrl.dismiss();
+            this.appGlobalService.isOpenModal = false;
           } else {
             this.translate.get('PASSCODE.PASSCODE_CONFIRM_NOT_MATCH', {}).subscribe((res: string) => {
               this.uiUtility.toastMsg(res);
@@ -131,10 +122,9 @@ export class PasscodePage implements OnInit {
           }
         } else if(this.isPasscode) {
           if(this.passcodeObj[this.userService.userID] == passcodeStr) {
-            this.navCtrl.pop()
-              .then(res => {
-                this.appGlobalService.isOpenModal = false;
-              });
+            this.modalCtrl.dismiss().then((res) => {
+              this.appGlobalService.isOpenModal = false;
+            });
           } else {
             this.shakeAction(true);
             this.translate.get('PASSCODE.PASSCODE_DOES_NOT_MATCH', {}).subscribe((res: string) => {
@@ -154,10 +144,11 @@ export class PasscodePage implements OnInit {
   }
 
   goToTouchIdPage() {
-    this.modalCtrl.create(TouchidPage).present()
-      .then(res => {
-        this.navCtrl.remove(this.viewCtrl.index);
-      });
+    this.modalCtrl.dismiss().then((res) => {
+      this.modalCtrl.create({component: TouchidPage, componentProps: {}})
+        .then((modal) => {
+          modal.present();
+        });
+    });
   }
-
 }

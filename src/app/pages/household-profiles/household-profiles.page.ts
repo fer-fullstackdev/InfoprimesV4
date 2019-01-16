@@ -47,15 +47,15 @@ export class HouseholdProfilesPage implements OnInit {
   }
 
   goBack() {
-    this.navCtrl.pop();
+    // this.navCtrl.pop();
   }
 
   goProfileReview() {
-    this.navCtrl.push(ProfileReviewPage);
+    // this.navCtrl.push(ProfileReviewPage);
   }
 
   goHouseholdProfile(contact: any) {
-    this.navCtrl.push(HouseholdProfilePage, {contact: contact});
+    // this.navCtrl.push(HouseholdProfilePage, {contact: contact});
   }
 
   getPoliciesByContactID(contactId: any) {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams, App } from '@ionic/angular';
+// import { NavController, NavParams, App } from '@ionic/angular';
+import { NavController, NavParams } from '@ionic/angular';
 
 import { PolicyStatusPage } from '../policy-status/policy-status.page';
 import { HouseholdProfilePage } from '../household-profile/household-profile.page';
@@ -26,7 +27,6 @@ export class PolicyPage implements OnInit {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public appCtrl: App,
               public uiUtility: UiUtilsService,
               public apiService: ApiService,
               public userService: UserService,
@@ -52,23 +52,23 @@ export class PolicyPage implements OnInit {
   }
 
   goBack() {
-    this.navCtrl.pop();
+    // this.navCtrl.pop();
   }
 
   goPolicyStatus(policy: any) {
-    this.navCtrl.push(PolicyStatusPage, {policy: policy});
+    // this.navCtrl.push(PolicyStatusPage, {policy: policy});
   }
 
   goHouseholdProfile(contact: string) {
-    this.navCtrl.push(HouseholdProfilePage, {contact: contact});
+    // this.navCtrl.push(HouseholdProfilePage, {contact: contact});
   }
 
   goPaperWork() {
-    this.navCtrl.push(PaperworkPage);
+    // this.navCtrl.push(PaperworkPage);
   }
 
   goBroker() {
-    this.appCtrl.getRootNav().push(TabsPage, {tabIndex: 1});
+    // this.appCtrl.getRootNav().push(TabsPage, {tabIndex: 1});
   }
 
   calcDate(deliveredDate: any, durationYears: any, format: string) {

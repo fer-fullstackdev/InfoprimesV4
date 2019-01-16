@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, NavParams, App } from '@ionic/angular';
+// import { NavController, NavParams, App } from '@ionic/angular';
+import { NavController, NavParams } from '@ionic/angular';
 
 import { TabsPage } from '../tabs/tabs.page';
 
@@ -11,8 +12,7 @@ import { TabsPage } from '../tabs/tabs.page';
 export class ConfirmationPage implements OnInit {
 
   constructor(public navCtrl: NavController,
-              public navParams: NavParams,
-              public appCtrl: App) {}
+              public navParams: NavParams) {}
 
   ngOnInit() {
   }
@@ -22,10 +22,10 @@ export class ConfirmationPage implements OnInit {
   }
 
   goBroker() {
-    this.appCtrl.getRootNav().push(TabsPage, {tabIndex: 1});
+    // this.appCtrl.getRootNav().push(TabsPage, {tabIndex: 1});
   }
 
   goBack() {
-    this.navCtrl.pop();
+    // this.navCtrl.pop();
   }
 }

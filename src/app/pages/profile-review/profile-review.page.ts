@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
-import { NavController, NavParams, Slides, ModalController } from '@ionic/angular';
+import { NavController, NavParams, IonSlides, ModalController } from '@ionic/angular';
 import { Http, Headers } from '@angular/http';
 
 import { ConfirmationPage } from '../confirmation/confirmation.page';
@@ -22,7 +22,7 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./profile-review.page.scss'],
 })
 export class ProfileReviewPage implements OnInit {
-  @ViewChild(Slides) slides: Slides;
+  @ViewChild(IonSlides) slides: IonSlides;
 
   public slideNum: any = 0;
   public isClickedMainPro: boolean = false;
@@ -95,9 +95,9 @@ export class ProfileReviewPage implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.slides.centeredSlides = true;
-    this.slides.slidesPerView = 1.06;
-    this.slides.spaceBetween = -10;
+    // this.slides.centeredSlides = true;
+    // this.slides.slidesPerView = 1.06;
+    // this.slides.spaceBetween = -10;
   }
 
   setAssetData(category, data) {
@@ -222,7 +222,7 @@ export class ProfileReviewPage implements OnInit {
   }
 
   goBack() {
-    this.navCtrl.pop();
+    // this.navCtrl.pop();
   }
 
   next() {
@@ -230,7 +230,7 @@ export class ProfileReviewPage implements OnInit {
     this.slides.slideNext();
     this.slides.lockSwipes(true);
     if(this.slideNum >= 6) {
-      this.navCtrl.push(ConfirmationPage);
+      // this.navCtrl.push(ConfirmationPage);
     }
   }
 
@@ -312,18 +312,18 @@ export class ProfileReviewPage implements OnInit {
   }
 
   goProfileEdit(type: string, action: string, data: any) {
-    let profileModal = this.modalCtrl.create(ProfileEditPage, {type: type, action: action, data});
-    profileModal.present();
+    // let profileModal = this.modalCtrl.create(ProfileEditPage, {type: type, action: action, data});
+    // profileModal.present();
   }
 
   goMortgageLoanEdit(action: string, data: Object) {
-    let mortgageLoanModal = this.modalCtrl.create(MortgageLoanEditPage, {action: action, data: data});
-    mortgageLoanModal.present();
+    // let mortgageLoanModal = this.modalCtrl.create(MortgageLoanEditPage, {action: action, data: data});
+    // mortgageLoanModal.present();
   }
 
   goInsuranceInvestEdit(action: string, data: any) {
-    let insuranceInvestModal = this.modalCtrl.create(InsuranceInvestEditPage, {action: action, data: data});
-    insuranceInvestModal.present();
+    // let insuranceInvestModal = this.modalCtrl.create(InsuranceInvestEditPage, {action: action, data: data});
+    // insuranceInvestModal.present();
   }
 
   onChange(category, option, event) {
@@ -343,18 +343,18 @@ export class ProfileReviewPage implements OnInit {
   }
 
   goAssetsEdit(action: string, data: Object) {
-    let assetsModal = this.modalCtrl.create(AssetsEditPage, {action: action, data: data});
-    assetsModal.present();
+    // let assetsModal = this.modalCtrl.create(AssetsEditPage, {action: action, data: data});
+    // assetsModal.present();
   }
 
   goProfessionEdit(data: any) {
-    let professionModal = this.modalCtrl.create(ProfessionEditPage, {data: data});
-    professionModal.present();
+    // let professionModal = this.modalCtrl.create(ProfessionEditPage, {data: data});
+    // professionModal.present();
   }
 
   openLiabilitiesEdit(data: any, type: string, index: number) {
-    let liabilitiesModal = this.modalCtrl.create(LiabilitiesEditPage, {data: data, type: type, index: index});
-    liabilitiesModal.present();
+    // let liabilitiesModal = this.modalCtrl.create(LiabilitiesEditPage, {data: data, type: type, index: index});
+    // liabilitiesModal.present();
   }
 
   getSlideIndexArr(index: any) {
